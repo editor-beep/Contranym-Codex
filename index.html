@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Contranym Codex</title>
+    <title>CONTRANYM CODEX • Words That Betray Themselves</title>
     <meta name="description" content="A codex of contranyms — words that carry two opposite meanings within themselves.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
@@ -12,7 +12,8 @@
             font-family: 'EB Garamond', serif;
             background: #2C2C2C;
             color: #F5F0E6;
-            background-image: linear-gradient(rgba(60,11,36,0.85), rgba(60,11,36,0.85)), url('https://picsum.photos/id/1015/2000/1200');
+            background-image: linear-gradient(rgba(60,11,36,0.82), rgba(60,11,36,0.82)),
+                              url('https://picsum.photos/id/1015/2000/1200');
             background-size: cover;
             background-attachment: fixed;
         }
@@ -21,15 +22,28 @@
             content: '';
             position: fixed;
             inset: 0;
-            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px);
+            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.035) 10px, rgba(255,255,255,0.035) 20px);
             animation: filmgrain 0.8s steps(5) infinite;
             pointer-events: none;
-            z-index: 0;
+            z-index: 1;
         }
 
-        @keyframes filmgrain { 0% { background-position: 0 0; } 100% { background-position: 100px 100px; } }
+        @keyframes filmgrain { 0% { background-position: 0 0; } 100% { background-position: 120px 120px; } }
 
-        .header-font { font-family: 'Playfair Display', serif; letter-spacing: 0.15em; }
+        .header-font { font-family: 'Playfair Display', serif; letter-spacing: 0.12em; }
+
+        .hero-word {
+            font-size: clamp(5rem, 12vw, 9rem);
+            line-height: 0.85;
+            animation: lynchJitter 4s infinite alternate ease-in-out;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        @keyframes lynchJitter {
+            0% { transform: translate(0, 0) rotate(-1.5deg); }
+            100% { transform: translate(8px, -6px) rotate(2deg); }
+        }
 
         .codex-entry {
             transition: background 0.2s;
@@ -54,44 +68,54 @@
 </head>
 <body class="min-h-screen relative">
 
-    <nav class="bg-[#3C0B24] py-6 border-b-4 border-[#C9A04C] sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-8 flex justify-between items-center">
-            <span class="header-font text-3xl text-[#C9A04C]">CONTRANYM CODEX</span>
-            <a href="the-flip.html" class="text-[#C9A04C]/70 hover:text-[#C9A04C] transition-colors text-sm tracking-widest uppercase">The Flip</a>
+    <nav class="bg-[#3C0B24] border-b-4 border-[#C9A04C] py-6 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-8 flex justify-between items-center">
+            <h1 class="header-font text-4xl text-[#C9A04C]">CONTRANYM CODEX</h1>
+            <div class="flex gap-8 text-lg">
+                <a href="#codex" class="hover:text-[#C9A04C] transition-colors">Codex</a>
+                <a href="the-flip.html" class="hover:text-[#C9A04C] transition-colors">The Flip</a>
+            </div>
         </div>
     </nav>
 
-    <div class="max-w-5xl mx-auto px-8 py-16 relative z-10">
+    <!-- Hero -->
+    <section class="min-h-screen flex items-center relative z-10">
+        <div class="max-w-6xl mx-auto px-8 grid lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8">
+                <div class="text-[#C9A04C]/50 uppercase tracking-[0.5em] text-sm">A LINGUISTIC DREAM LOG</div>
+                <h2 onclick="splitWord(this)" id="hero-word"
+                    class="hero-word header-font text-[#C9A04C] leading-none">
+                    CLEAVE
+                </h2>
+                <p class="text-2xl max-w-md">One word.<br>Two truths.<br><span class="text-[#C9A04C]">No loyalty.</span></p>
+                <a href="the-flip.html"
+                   class="inline-block mt-8 px-10 py-5 bg-[#C9A04C] text-[#3C0B24] text-xl font-bold hover:bg-[#F5F0E6] transition-colors">
+                    ENTER THE FLIP &rarr;
+                </a>
+            </div>
 
-        <!-- Hero -->
-        <section class="py-8 pb-16 max-w-[62ch]">
-            <p class="text-[#C9A04C] text-xs tracking-[0.3em] uppercase mb-6">A lexical curiosity</p>
-            <h1 class="header-font leading-none mb-8">
-                <span class="block text-sm tracking-[0.35em] uppercase text-[#F5F0E6]/50 mb-2">The</span>
-                <span class="text-5xl sm:text-7xl text-[#C9A04C]">Contranym Codex</span>
-            </h1>
-            <p class="text-xl leading-relaxed text-[#F5F0E6]/90 mb-4">
-                Some words contain their own opposites &mdash; seeds of contradiction folded into a single form.
-            </p>
-            <p class="leading-relaxed text-[#F5F0E6]/70 mb-4">
-                A <em>contranym</em> (also called an auto-antonym or Janus word) is a word with two definitions that directly contradict each other. <em>Sanction</em> can mean to approve or to penalise. <em>Cleave</em> means both to cling together and to split apart. <em>Dust</em> can mean to add a fine layer or to remove one.
-            </p>
-            <p class="leading-relaxed text-[#F5F0E6]/70 mb-8">
-                This codex collects them &mdash; each entry laid out so both meanings face each other at once.
-            </p>
-            <a href="the-flip.html" class="inline-block text-xs tracking-[0.22em] uppercase bg-[#C9A04C] text-[#3C0B24] px-6 py-3 hover:bg-[#F5F0E6] transition-colors font-bold">
-                Read the essay &rarr;
-            </a>
-        </section>
+            <div class="space-y-12 text-xl">
+                <div class="border-r-2 border-[#C9A04C] pr-12">
+                    <span class="text-[#C9A04C]">to split violently</span><br>
+                    <span class="text-[#F5F0E6]/70">"The axe cleaved the oak."</span>
+                </div>
+                <div>
+                    <span class="text-[#F5F0E6]/50">to cling desperately</span><br>
+                    <span class="text-[#F5F0E6]/50">"She cleaved to her strange convictions."</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <div class="h-px bg-[#C9A04C]/40 mb-16"></div>
+    <!-- Codex -->
+    <section id="codex" class="py-20 bg-black/50 relative z-10">
+        <div class="max-w-6xl mx-auto px-8">
 
-        <!-- Codex grid -->
-        <section>
-            <p class="text-[#C9A04C] text-xs tracking-[0.28em] uppercase mb-2">Entries</p>
-            <p class="text-[#F5F0E6]/30 text-xs tracking-[0.18em] uppercase mb-8">The Flip &mdash; Field Notes</p>
+            <h2 class="header-font text-5xl text-center mb-16 text-[#C9A04C]">FROM THE VAULT</h2>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-px bg-[#C9A04C]/10 border border-[#C9A04C]/10">
+            <p class="text-[#C9A04C] text-xs tracking-[0.28em] uppercase mb-2">The Flip &mdash; Field Notes</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-px bg-[#C9A04C]/10 border border-[#C9A04C]/10 mb-10">
 
                 <a href="temper.html" class="codex-entry bg-black/50 p-7 block relative">
                     <span class="block text-[9px] uppercase tracking-[0.2em] text-[#C9A04C]/40 mb-2">The Flip</span>
@@ -260,7 +284,7 @@
 
             </div>
 
-            <p class="text-[#F5F0E6]/30 text-xs tracking-[0.18em] uppercase mb-4 mt-10">Codex</p>
+            <p class="text-[#F5F0E6]/30 text-xs tracking-[0.18em] uppercase mb-4">Codex</p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-px bg-[#C9A04C]/10 border border-[#C9A04C]/10">
 
@@ -302,13 +326,32 @@
                 </div>
 
             </div>
-        </section>
 
-        <footer class="mt-24 pt-8 border-t border-[#C9A04C]/20">
+        </div>
+
+        <footer class="max-w-6xl mx-auto px-8 mt-24 pt-8 border-t border-[#C9A04C]/20">
             <div class="text-[#C9A04C]/40 text-xs tracking-widest uppercase">The Contranym Codex &mdash; words divided against themselves</div>
         </footer>
 
-    </div>
+    </section>
+
+    <script>
+        function splitWord(el) {
+            if (el.textContent === "CLEAVE") {
+                el.style.transition = "all 0.7s";
+                el.style.transform = "rotate(12deg) scale(1.08)";
+                el.style.color = "#F5F0E6";
+                setTimeout(() => {
+                    el.textContent = "CLING";
+                    el.style.color = "#C9A04C";
+                }, 350);
+            } else {
+                el.textContent = "CLEAVE";
+                el.style.color = "#C9A04C";
+                el.style.transform = "rotate(0) scale(1)";
+            }
+        }
+    </script>
 
 </body>
 </html>
