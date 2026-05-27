@@ -1,137 +1,178 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Contranym Codex</title>
-  <meta name="description" content="A codex of contranyms — words that carry two opposite meanings within themselves.">
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Contranym Codex</title>
+    <meta name="description" content="A codex of contranyms — words that carry two opposite meanings within themselves.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #2C2C2C;
+            color: #F5F0E6;
+            background-image: linear-gradient(rgba(60,11,36,0.85), rgba(60,11,36,0.85)), url('https://picsum.photos/id/1015/2000/1200');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px);
+            animation: filmgrain 0.8s steps(5) infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes filmgrain { 0% { background-position: 0 0; } 100% { background-position: 100px 100px; } }
+
+        .header-font { font-family: 'Playfair Display', serif; letter-spacing: 0.15em; }
+
+        .codex-entry {
+            transition: background 0.2s;
+        }
+        .codex-entry:hover {
+            background: rgba(201, 160, 76, 0.06);
+        }
+        .codex-entry:hover .entry-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .entry-arrow {
+            opacity: 0;
+            transform: translateX(-4px);
+            transition: opacity 0.2s, transform 0.2s;
+        }
+        .entry-disabled {
+            pointer-events: none;
+            opacity: 0.4;
+        }
+    </style>
 </head>
-<body>
+<body class="min-h-screen relative">
 
-<div class="site-wrap">
-
-  <header class="site-header">
-    <a href="index.html" class="logotype">The Contranym Codex</a>
-    <nav class="site-nav">
-      <a href="index.html" class="active">Codex</a>
-      <a href="the-flip.html">Essay</a>
+    <nav class="bg-[#3C0B24] py-6 border-b-4 border-[#C9A04C] sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-8 flex justify-between items-center">
+            <span class="header-font text-3xl text-[#C9A04C]">CONTRANYM CODEX</span>
+            <a href="the-flip.html" class="text-[#C9A04C]/70 hover:text-[#C9A04C] transition-colors text-sm tracking-widest uppercase">Essay</a>
+        </div>
     </nav>
-  </header>
 
-  <main>
+    <div class="max-w-5xl mx-auto px-8 py-16 relative z-10">
 
-    <section class="hero">
-      <p class="hero-eyebrow">A lexical curiosity</p>
-      <h1 class="hero-title">
-        <span class="the">The</span>
-        Contranym Codex
-      </h1>
-      <div class="hero-intro">
-        <p class="lede">Some words contain their own opposites — seeds of contradiction folded into a single form.</p>
-        <p>A <em>contranym</em> (also called an auto-antonym or Janus word) is a word with two definitions that directly contradict each other. <em>Sanction</em> can mean to approve or to penalise. <em>Cleave</em> means both to cling together and to split apart. <em>Dust</em> can mean to add a fine layer or to remove one.</p>
-        <p>This codex collects them — each entry laid out so both meanings face each other at once.</p>
-      </div>
-      <a href="the-flip.html" class="cta-link">Read the essay</a>
-    </section>
+        <!-- Hero -->
+        <section class="py-8 pb-16 max-w-[62ch]">
+            <p class="text-[#C9A04C] text-xs tracking-[0.3em] uppercase mb-6">A lexical curiosity</p>
+            <h1 class="header-font leading-none mb-8">
+                <span class="block text-sm tracking-[0.35em] uppercase text-[#F5F0E6]/50 mb-2">The</span>
+                <span class="text-5xl sm:text-7xl text-[#C9A04C]">Contranym Codex</span>
+            </h1>
+            <p class="text-xl leading-relaxed text-[#F5F0E6]/90 mb-4">
+                Some words contain their own opposites &mdash; seeds of contradiction folded into a single form.
+            </p>
+            <p class="leading-relaxed text-[#F5F0E6]/70 mb-4">
+                A <em>contranym</em> (also called an auto-antonym or Janus word) is a word with two definitions that directly contradict each other. <em>Sanction</em> can mean to approve or to penalise. <em>Cleave</em> means both to cling together and to split apart. <em>Dust</em> can mean to add a fine layer or to remove one.
+            </p>
+            <p class="leading-relaxed text-[#F5F0E6]/70 mb-8">
+                This codex collects them &mdash; each entry laid out so both meanings face each other at once.
+            </p>
+            <a href="the-flip.html" class="inline-block text-xs tracking-[0.22em] uppercase bg-[#C9A04C] text-[#3C0B24] px-6 py-3 hover:bg-[#F5F0E6] transition-colors font-bold">
+                Read the essay &rarr;
+            </a>
+        </section>
 
-    <hr class="rule-gold">
+        <div class="h-px bg-[#C9A04C]/40 mb-16"></div>
 
-    <section>
-      <p class="section-label">Entries</p>
+        <!-- Codex grid -->
+        <section>
+            <p class="text-[#C9A04C] text-xs tracking-[0.28em] uppercase mb-8">Entries</p>
 
-      <div class="codex-grid">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-px bg-[#C9A04C]/10 border border-[#C9A04C]/10">
 
-        <a href="bound.html" class="codex-entry">
-          <span class="entry-word">bound</span>
-          <span class="entry-pos">adjective / verb</span>
-          <ul class="entry-defs">
-            <li data-n="I.">Heading toward a destination</li>
-            <li data-n="II.">Restricted; unable to move</li>
-          </ul>
-          <span class="entry-arrow">→</span>
-        </a>
+                <a href="bound.html" class="codex-entry bg-black/50 p-7 block relative">
+                    <span class="block text-2xl text-[#F5F0E6] mb-1 tracking-wide">bound</span>
+                    <span class="block text-[#C9A04C] text-xs uppercase tracking-widest mb-4">adjective / verb</span>
+                    <ul class="space-y-1 text-sm text-[#F5F0E6]/50">
+                        <li class="pl-5 relative before:content-['I.'] before:absolute before:left-0 before:text-[#C9A04C] before:text-xs">Heading toward a destination</li>
+                        <li class="pl-5 relative before:content-['II.'] before:absolute before:left-0 before:text-[#C9A04C] before:text-xs border-t border-[#C9A04C]/10 pt-1 mt-1">Restricted; unable to move</li>
+                    </ul>
+                    <span class="entry-arrow absolute bottom-4 right-5 text-[#C9A04C] text-sm">&rarr;</span>
+                </a>
 
-        <a href="#" class="codex-entry" aria-disabled="true">
-          <span class="entry-word">cleave</span>
-          <span class="entry-pos">verb</span>
-          <ul class="entry-defs">
-            <li data-n="I.">To split or sever</li>
-            <li data-n="II.">To cling or adhere closely</li>
-          </ul>
-          <span class="entry-arrow">→</span>
-        </a>
+                <div class="codex-entry entry-disabled bg-black/50 p-7 relative">
+                    <span class="block text-2xl text-[#F5F0E6] mb-1 tracking-wide">cleave</span>
+                    <span class="block text-[#C9A04C] text-xs uppercase tracking-widest mb-4">verb</span>
+                    <ul class="space-y-1 text-sm text-[#F5F0E6]/50">
+                        <li class="pl-5 relative before:content-['I.'] before:absolute before:left-0 before:text-[#C9A04C] before:text-xs">To split or sever</li>
+                        <li class="pl-5 relative before:content-['II.'] before:absolute before:left-0 before:text-[#C9A04C] before:text-xs border-t border-[#C9A04C]/10 pt-1 mt-1">To cling or adhere closely</li>
+                    </ul>
+                </div>
 
-        <a href="#" class="codex-entry" aria-disabled="true">
-          <span class="entry-word">sanction</span>
-          <span class="entry-pos">noun / verb</span>
-          <ul class="entry-defs">
-            <li data-n="I.">Official permission or approval</li>
-            <li data-n="II.">A penalty imposed for a violation</li>
-          </ul>
-          <span class="entry-arrow">→</span>
-        </a>
+                <div class="codex-entry entry-disabled bg-black/50 p-7 relative">
+                    <span class="block text-2xl text-[#F5F0E6] mb-1 tracking-wide">sanction</span>
+                    <span class="block text-[#C9A04C] text-xs uppercase tracking-widest mb-4">noun / verb</span>
+                    <ul class="space-y-1 text-sm text-[#F5F0E6]/50">
+                        <li class="pl-5 relative before:content-['I.'] before:absolute before:left-0 before:text-[#C9A04C] before:text-xs">Official permission or approval</li>
+                        <li class="pl-5 relative before:content-['II.'] before:absolute before:left-0 before:text-[#C9A04C] before:text-xs border-t border-[#C9A04C]/10 pt-1 mt-1">A penalty imposed for a violation</li>
+                    </ul>
+                </div>
 
-        <a href="#" class="codex-entry" aria-disabled="true">
-          <span class="entry-word">dust</span>
-          <span class="entry-pos">verb</span>
-          <ul class="entry-defs">
-            <li data-n="I.">To sprinkle with a fine powder</li>
-            <li data-n="II.">To remove dust from a surface</li>
-          </ul>
-          <span class="entry-arrow">→</span>
-        </a>
+                <div class="codex-entry entry-disabled bg-black/50 p-7 relative">
+                    <span class="block text-2xl text-[#F5F0E6] mb-1 tracking-wide">dust</span>
+                    <span class="block text-[#C9A04C] text-xs uppercase tracking-widest mb-4">verb</span>
+                    <ul class="space-y-1 text-sm text-[#F5F0E6]/50">
+                        <li class="pl-5 relative before:content-['I.'] before:absolute before:left-0 before:text-[#C9A04C] before:text-xs">To sprinkle with a fine powder</li>
+                        <li class="pl-5 relative before:content-['II.'] before:absolute before:left-0 before:text-[#C9A04C] before:text-xs border-t border-[#C9A04C]/10 pt-1 mt-1">To remove dust from a surface</li>
+                    </ul>
+                </div>
 
-        <a href="#" class="codex-entry" aria-disabled="true">
-          <span class="entry-word">left</span>
-          <span class="entry-pos">verb / adjective</span>
-          <ul class="entry-defs">
-            <li data-n="I.">Departed; went away</li>
-            <li data-n="II.">Remaining; still present</li>
-          </ul>
-          <span class="entry-arrow">→</span>
-        </a>
+                <div class="codex-entry entry-disabled bg-black/50 p-7 relative">
+                    <span class="block text-2xl text-[#F5F0E6] mb-1 tracking-wide">left</span>
+                    <span class="block text-[#C9A04C] text-xs uppercase tracking-widest mb-4">verb / adjective</span>
+                    <ul class="space-y-1 text-sm text-[#F5F0E6]/50">
+                        <li class="pl-5 relative before:content-['I.'] before:absolute before:left-0 before:text-[#C9A04C] before:text-xs">Departed; went away</li>
+                        <li class="pl-5 relative before:content-['II.'] before:absolute before:left-0 before:text-[#C9A04C] before:text-xs border-t border-[#C9A04C]/10 pt-1 mt-1">Remaining; still present</li>
+                    </ul>
+                </div>
 
-        <a href="#" class="codex-entry" aria-disabled="true">
-          <span class="entry-word">weather</span>
-          <span class="entry-pos">verb</span>
-          <ul class="entry-defs">
-            <li data-n="I.">To endure and survive hardship</li>
-            <li data-n="II.">To erode or wear away</li>
-          </ul>
-          <span class="entry-arrow">→</span>
-        </a>
+                <div class="codex-entry entry-disabled bg-black/50 p-7 relative">
+                    <span class="block text-2xl text-[#F5F0E6] mb-1 tracking-wide">weather</span>
+                    <span class="block text-[#C9A04C] text-xs uppercase tracking-widest mb-4">verb</span>
+                    <ul class="space-y-1 text-sm text-[#F5F0E6]/50">
+                        <li class="pl-5 relative before:content-['I.'] before:absolute before:left-0 before:text-[#C9A04C] before:text-xs">To endure and survive hardship</li>
+                        <li class="pl-5 relative before:content-['II.'] before:absolute before:left-0 before:text-[#C9A04C] before:text-xs border-t border-[#C9A04C]/10 pt-1 mt-1">To erode or wear away</li>
+                    </ul>
+                </div>
 
-        <a href="#" class="codex-entry" aria-disabled="true">
-          <span class="entry-word">screen</span>
-          <span class="entry-pos">verb</span>
-          <ul class="entry-defs">
-            <li data-n="I.">To display or show publicly</li>
-            <li data-n="II.">To hide, conceal, or block</li>
-          </ul>
-          <span class="entry-arrow">→</span>
-        </a>
+                <div class="codex-entry entry-disabled bg-black/50 p-7 relative">
+                    <span class="block text-2xl text-[#F5F0E6] mb-1 tracking-wide">screen</span>
+                    <span class="block text-[#C9A04C] text-xs uppercase tracking-widest mb-4">verb</span>
+                    <ul class="space-y-1 text-sm text-[#F5F0E6]/50">
+                        <li class="pl-5 relative before:content-['I.'] before:absolute before:left-0 before:text-[#C9A04C] before:text-xs">To display or show publicly</li>
+                        <li class="pl-5 relative before:content-['II.'] before:absolute before:left-0 before:text-[#C9A04C] before:text-xs border-t border-[#C9A04C]/10 pt-1 mt-1">To hide, conceal, or block</li>
+                    </ul>
+                </div>
 
-        <a href="#" class="codex-entry" aria-disabled="true">
-          <span class="entry-word">trim</span>
-          <span class="entry-pos">verb</span>
-          <ul class="entry-defs">
-            <li data-n="I.">To cut away; to reduce</li>
-            <li data-n="II.">To add decorative edging to</li>
-          </ul>
-          <span class="entry-arrow">→</span>
-        </a>
+                <div class="codex-entry entry-disabled bg-black/50 p-7 relative">
+                    <span class="block text-2xl text-[#F5F0E6] mb-1 tracking-wide">trim</span>
+                    <span class="block text-[#C9A04C] text-xs uppercase tracking-widest mb-4">verb</span>
+                    <ul class="space-y-1 text-sm text-[#F5F0E6]/50">
+                        <li class="pl-5 relative before:content-['I.'] before:absolute before:left-0 before:text-[#C9A04C] before:text-xs">To cut away; to reduce</li>
+                        <li class="pl-5 relative before:content-['II.'] before:absolute before:left-0 before:text-[#C9A04C] before:text-xs border-t border-[#C9A04C]/10 pt-1 mt-1">To add decorative edging to</li>
+                    </ul>
+                </div>
 
-      </div>
-    </section>
+            </div>
+        </section>
 
-  </main>
+        <footer class="mt-24 pt-8 border-t border-[#C9A04C]/20">
+            <div class="text-[#C9A04C]/40 text-xs tracking-widest uppercase">The Contranym Codex &mdash; words divided against themselves</div>
+        </footer>
 
-  <footer class="site-footer">
-    <div>The Contranym Codex &mdash; words divided against themselves</div>
-  </footer>
-
-</div>
+    </div>
 
 </body>
 </html>

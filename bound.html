@@ -1,141 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>bound — The Contranym Codex</title>
-  <meta name="description" content="bound: heading toward a place, or restricted from moving. A Janus word that means its own opposite.">
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOUND — Contranym Codex</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #2C2C2C;
+            color: #F5F0E6;
+            background-image: linear-gradient(rgba(60,11,36,0.85), rgba(60,11,36,0.85)), url('https://picsum.photos/id/1015/2000/1200');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px);
+            animation: filmgrain 0.8s steps(5) infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes filmgrain { 0% { background-position: 0 0; } 100% { background-position: 100px 100px; } }
+
+        .header-font { font-family: 'Playfair Display', serif; letter-spacing: 0.15em; }
+
+        .contranym-title {
+            font-size: 7rem;
+            line-height: 0.85;
+            animation: lynchJitter 4s infinite alternate;
+        }
+
+        @keyframes lynchJitter {
+            0% { transform: translate(0,0) rotate(-2deg); }
+            100% { transform: translate(8px, -3px) rotate(2deg); }
+        }
+
+        @media (max-width: 640px) {
+            .contranym-title { font-size: 4.5rem; }
+        }
+    </style>
 </head>
-<body>
-
-<div class="site-wrap">
-
-  <header class="site-header">
-    <a href="index.html" class="logotype">The Contranym Codex</a>
-    <nav class="site-nav">
-      <a href="index.html">Codex</a>
-      <a href="the-flip.html">Essay</a>
-    </nav>
-  </header>
-
-  <main>
-
-    <div class="entry-header">
-      <p class="pos-line">adjective &middot; past participle &middot; Old English</p>
-      <h1 class="headword">bound</h1>
-      <p class="pronunciation">/ba&#650;nd/</p>
-    </div>
-
-    <div class="meaning-split">
-
-      <div class="meaning-panel">
-        <span class="panel-num">Meaning I.</span>
-        <p class="panel-def">Heading toward; on one&rsquo;s way to a place or outcome.</p>
-        <p class="panel-ex">
-          &ldquo;The freighter was bound for Lisbon, its hull low in the water.&rdquo;<br><br>
-          &ldquo;She felt certain she was bound for something larger than the town.&rdquo;
-        </p>
-      </div>
-
-      <div class="versus">
-        <span class="versus-glyph">vs</span>
-      </div>
-
-      <div class="meaning-panel">
-        <span class="panel-num">Meaning II.</span>
-        <p class="panel-def">Restrained; unable to move or act freely; tied.</p>
-        <p class="panel-ex">
-          &ldquo;His hands were bound behind him with coarse rope.&rdquo;<br><br>
-          &ldquo;She felt bound to the house by obligation she could not name.&rdquo;
-        </p>
-      </div>
-
-    </div>
-
-    <div class="etym-block">
-      <p class="etym-label">Etymology</p>
-      <p>
-        Two entirely separate Old English words collapse into the same modern form.
-        <em>Bound</em> in the sense of <em>heading toward</em> descends from Old Norse
-        <strong>b&uacute;inn</strong> — past participle of <em>b&uacute;a</em>, &ldquo;to prepare,
-        to make ready&rdquo; — arriving in Middle English via Scandinavian-settled northern dialects.
-        The terminal <em>-d</em> was added by false analogy with past participles.
-      </p>
-      <p style="margin-top: 0.7em;">
-        <em>Bound</em> in the sense of <em>restrained</em> is the past participle of
-        <em>bind</em>, from Old English <strong>bindan</strong>, Proto-Germanic
-        <strong>*bindaną</strong>. The two lineages diverged a millennium ago
-        and reunited in spelling only by accident of phonological drift.
-      </p>
-    </div>
-
-    <hr class="rule">
-
-    <section>
-      <h2>Usage in sentences</h2>
-      <ul class="usage-list">
-        <li>
-          <span class="sense-tag">Toward</span>
-          <span class="usage-text">Every train in the terminal was bound for somewhere he had never been.</span>
-        </li>
-        <li>
-          <span class="sense-tag">Toward</span>
-          <span class="usage-text">Duty-bound, he returned to the city he had fled twice before.</span>
-        </li>
-        <li>
-          <span class="sense-tag">Toward</span>
-          <span class="usage-text">The probe is bound for the outer planets; it will not return.</span>
-        </li>
-        <li>
-          <span class="sense-tag">Restrained</span>
-          <span class="usage-text">The pages were bound in calfskin, the text locked away inside.</span>
-        </li>
-        <li>
-          <span class="sense-tag">Restrained</span>
-          <span class="usage-text">He was contractually bound to silence for seven years.</span>
-        </li>
-        <li>
-          <span class="sense-tag">Restrained</span>
-          <span class="usage-text">The wound was bound tightly; he would not bleed again tonight.</span>
-        </li>
-      </ul>
-    </section>
-
-    <span class="ornament">&diams; &diams; &diams;</span>
-
-    <section>
-      <h2>The tension</h2>
-      <p>
-        What makes <em>bound</em> particularly uncanny among contranyms is that its two senses
-        are not merely opposite in meaning — they describe opposite relationships to movement
-        itself. One <em>bound</em> is pure momentum, directionality, the arrow of intent.
-        The other is the negation of movement, the condition of being held.
-      </p>
-      <p>
-        And yet the word is the same. Say it aloud — <em>bound</em> — and nothing in the
-        sound tells you which it is. Context does all the work. Strip the context and the
-        word becomes genuinely ambiguous: <em>She was bound.</em> Going somewhere?
-        Or prevented from going anywhere?
-      </p>
-      <p>
-        Both, perhaps. The English language occasionally achieves accidental poetry.
-      </p>
-    </section>
-
-    <nav class="entry-nav">
-      <a href="index.html" class="nav-back">All entries</a>
-      <a href="the-flip.html">Read the essay</a>
-      <a href="#" class="nav-next">cleave</a>
+<body class="min-h-screen relative">
+    <nav class="bg-[#3C0B24] py-6 border-b-4 border-[#C9A04C] sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-8 flex justify-between items-center">
+            <a href="index.html" class="header-font text-3xl text-[#C9A04C]">← CONTRANYM CODEX</a>
+            <button onclick="window.history.back()" class="text-[#C9A04C] hover:text-white transition-colors text-sm tracking-widest uppercase">Close Specimen</button>
+        </div>
     </nav>
 
-  </main>
+    <div class="max-w-5xl mx-auto px-8 py-16 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-16">
 
-  <footer class="site-footer">
-    <div>The Contranym Codex &mdash; words divided against themselves</div>
-  </footer>
+            <!-- Left column: Word & Definitions -->
+            <div class="lg:col-span-3">
+                <div class="text-[#C9A04C] text-xs tracking-[0.2em] mb-4">SPECIMEN #047 &bull; OLD ENGLISH / NORSE</div>
+                <h1 onclick="this.style.transform='rotate(12deg)'; setTimeout(()=>this.style.transform='rotate(0)',800)"
+                    class="contranym-title header-font text-[#C9A04C] cursor-pointer select-none">BOUND</h1>
 
-</div>
+                <div class="mt-16 space-y-16">
+                    <div class="flex gap-8">
+                        <div class="flex-1">
+                            <div class="uppercase text-[#C9A04C] text-sm mb-3 tracking-widest">Restrained &bull; Obligated</div>
+                            <p class="text-2xl leading-tight">&ldquo;She was bound by duty. Bound by chains. Bound by the rules she once wrote.&rdquo;</p>
+                            <div class="h-px bg-[#C9A04C]/30 my-8"></div>
+                            <p class="text-sm italic">&ldquo;Freedom bound&rdquo; &mdash; the phrase that broke your brain.</p>
+                        </div>
+                        <div class="flex-1">
+                            <div class="uppercase text-[#C9A04C]/60 text-sm mb-3 tracking-widest">Destined &bull; Heading Toward</div>
+                            <p class="text-2xl leading-tight">&ldquo;The ship is bound for strange waters. We are all bound for something.&rdquo;</p>
+                            <div class="h-px bg-[#C9A04C]/20 my-8"></div>
+                            <p class="text-sm italic">Even freedom can be a destination.</p>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Usage examples -->
+                <div class="mt-16 border-t border-[#C9A04C]/20 pt-12">
+                    <div class="text-xs uppercase tracking-widest text-[#C9A04C] mb-6">Usage in sentences</div>
+                    <ul class="space-y-4">
+                        <li class="grid grid-cols-[80px_1fr] gap-4 items-baseline text-sm">
+                            <span class="uppercase tracking-wider text-[#C9A04C] text-xs">Toward</span>
+                            <span class="italic text-[#F5F0E6]/80">Every train in the terminal was bound for somewhere he had never been.</span>
+                        </li>
+                        <li class="grid grid-cols-[80px_1fr] gap-4 items-baseline text-sm border-t border-[#C9A04C]/10 pt-4">
+                            <span class="uppercase tracking-wider text-[#C9A04C] text-xs">Toward</span>
+                            <span class="italic text-[#F5F0E6]/80">The probe is bound for the outer planets; it will not return.</span>
+                        </li>
+                        <li class="grid grid-cols-[80px_1fr] gap-4 items-baseline text-sm border-t border-[#C9A04C]/10 pt-4">
+                            <span class="uppercase tracking-wider text-[#C9A04C] text-xs">Restrained</span>
+                            <span class="italic text-[#F5F0E6]/80">The pages were bound in calfskin, the text locked away inside.</span>
+                        </li>
+                        <li class="grid grid-cols-[80px_1fr] gap-4 items-baseline text-sm border-t border-[#C9A04C]/10 pt-4">
+                            <span class="uppercase tracking-wider text-[#C9A04C] text-xs">Restrained</span>
+                            <span class="italic text-[#F5F0E6]/80">He was contractually bound to silence for seven years.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- The tension -->
+                <div class="mt-16 border-t border-[#C9A04C]/20 pt-12">
+                    <div class="text-xs uppercase tracking-widest text-[#C9A04C] mb-6">The tension</div>
+                    <p class="leading-relaxed text-[#F5F0E6]/80 mb-4">
+                        What makes <em>bound</em> particularly uncanny is that its two senses are not merely opposite in meaning &mdash; they describe opposite relationships to movement itself. One <em>bound</em> is pure momentum, directionality, the arrow of intent. The other is the negation of movement.
+                    </p>
+                    <p class="leading-relaxed text-[#F5F0E6]/80">
+                        Strip the context and the word becomes genuinely ambiguous: <em>She was bound.</em> Going somewhere? Or prevented from going anywhere? Both, perhaps. The English language occasionally achieves accidental poetry.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right sidebar: Etymology + Marginalia -->
+            <div class="lg:col-span-2 lg:border-l border-[#C9A04C]/30 lg:pl-12">
+                <div class="sticky top-24 space-y-12">
+                    <div>
+                        <div class="text-xs uppercase tracking-widest text-[#C9A04C] mb-2">adjective &middot; past participle</div>
+                        <div class="text-[#F5F0E6]/50 text-sm font-mono tracking-widest">/ba&#650;nd/</div>
+                        <div class="text-xs uppercase tracking-widest text-[#C9A04C] mt-6 mb-4">How the word tied itself in knots</div>
+                        <p class="text-[#F5F0E6]/80 text-sm leading-relaxed">
+                            From Old English <span class="font-bold text-[#F5F0E6]">bindan</span> (&ldquo;to tie&rdquo;) and Norse <span class="font-bold text-[#F5F0E6]">b&uacute;inn</span> (&ldquo;prepared, ready&rdquo;).
+                            One sense locks you down. The other launches you forward.
+                            Language performing its own escape act.
+                        </p>
+                        <p class="text-[#F5F0E6]/70 text-sm leading-relaxed mt-4">
+                            Two entirely separate words collapsed into the same modern form by accident of phonological drift. The terminal <em>-d</em> was added by false analogy with past participles.
+                        </p>
+                    </div>
+
+                    <div class="border border-[#C9A04C]/40 p-6 bg-black/30">
+                        <div class="italic text-sm leading-relaxed">&ldquo;The contradiction feels almost gendered &mdash; bound as obligation (often placed on women) versus bound as destiny (the heroic journey).&rdquo;</div>
+                        <div class="text-xs mt-4 text-[#C9A04C] uppercase tracking-widest">&mdash; Your Women &amp; Gender Studies major speaking</div>
+                    </div>
+
+                    <div>
+                        <button onclick="alert('Micro-fiction loading… The woman who was bound for freedom suddenly found herself bound by it.')"
+                                class="w-full py-6 border-2 border-[#C9A04C] hover:bg-[#C9A04C] hover:text-[#3C0B24] transition-all text-sm tracking-widest uppercase">
+                            Read the Dream Sequence &rarr;
+                        </button>
+                    </div>
+
+                    <nav class="pt-4 border-t border-[#C9A04C]/20">
+                        <div class="flex justify-between text-xs uppercase tracking-widest text-[#C9A04C]/60">
+                            <a href="index.html" class="hover:text-[#C9A04C] transition-colors">All entries</a>
+                            <a href="the-flip.html" class="hover:text-[#C9A04C] transition-colors">Essay &rarr;</a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </body>
 </html>
