@@ -51,9 +51,10 @@
             background: rgba(201,160,76,0.08);
         }
         .choice-btn:disabled { cursor: default; }
-        .choice-btn.surface  { border-color: #C9A04C;              background: rgba(201,160,76,0.1); }
-        .choice-btn.flip     { border-color: rgba(245,240,230,0.7); background: rgba(245,240,230,0.05); }
-        .choice-btn.wrong    { border-color: rgba(201,160,76,0.15); opacity: 0.45; }
+        .choice-btn.surface   { border-color: #C9A04C;              background: rgba(201,160,76,0.1); }
+        .choice-btn.flip      { border-color: rgba(245,240,230,0.7); background: rgba(245,240,230,0.05); }
+        .choice-btn.wrong     { border-color: rgba(201,160,76,0.15); }
+        .choice-btn.is-selected::before { content: '›  '; }
 
         /* ---- Escape Room ---- */
         .room-choice {
@@ -343,8 +344,9 @@
         document.querySelectorAll('.choice-btn').forEach((btn, i) => {
             btn.disabled = true;
             btn.classList.add(r.choices[i].type);
+            if (i === idx) btn.classList.add('is-selected');
+            else btn.style.opacity = '0.4';
         });
-        document.getElementById('flip-choices').style.opacity = '0.6';
 
         const isLast = flipState.round >= flipRounds.length - 1;
         document.getElementById('flip-feedback').innerHTML = `
@@ -726,6 +728,11 @@ Behind you, the sign flickers once more. <span class="word-highlight">LEFT</span
                 </div>
             </div>`;
     }
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+            ['flip-modal', 'escape-modal', 'screen-modal'].forEach(closeModal);
+        }
+    });
     </script>
 </body>
 </html>
