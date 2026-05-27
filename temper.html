@@ -3,119 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEMPER &mdash; The Flip &bull; Contranym Codex</title>
+    <title>TEMPER — Contranym Codex</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Playfair+Display:wght@400;700&display=swap');
         body {
             font-family: 'EB Garamond', serif;
             background: #2C2C2C;
             color: #F5F0E6;
-            background-image: linear-gradient(rgba(60,11,36,0.85), rgba(60,11,36,0.85)), url('https://picsum.photos/id/1015/2000/1200');
+            background-image: linear-gradient(rgba(60,11,36,0.88), rgba(60,11,36,0.88)), url('https://picsum.photos/id/1015/2000/1200');
             background-size: cover;
             background-attachment: fixed;
         }
         body::before {
             content: '';
-            position: fixed;
+            position: absolute;
             inset: 0;
             background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px);
             animation: filmgrain 0.8s steps(5) infinite;
             pointer-events: none;
-            z-index: 0;
         }
-        @keyframes filmgrain { 0% { background-position: 0 0; } 100% { background-position: 100px 100px; } }
+        @keyframes filmgrain { 0% { background-position: 0 0; } 100% { background-position: 120px 120px; } }
         .header-font { font-family: 'Playfair Display', serif; letter-spacing: 0.15em; }
-        .flip-title {
-            font-size: clamp(3.5rem, 10vw, 6.5rem);
-            line-height: 0.85;
-            animation: lynchJitter 4s infinite alternate;
-            font-family: 'Playfair Display', serif;
-            letter-spacing: 0.08em;
-        }
-        @keyframes lynchJitter {
-            0% { transform: translate(0,0) rotate(-0.4deg); }
-            100% { transform: translate(5px, -2px) rotate(0.4deg); }
-        }
+        .marginalia { font-style: italic; color: #C9A04C; border-left: 4px solid #1A3C45; padding-left: 1.75rem; margin: 2rem 0; }
     </style>
 </head>
 <body class="min-h-screen relative">
-
-    <nav class="bg-[#3C0B24] py-6 border-b-4 border-[#C9A04C] sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-8 flex justify-between items-center">
-            <a href="index.html" class="header-font text-3xl text-[#C9A04C]">CONTRANYM CODEX</a>
-            <a href="the-flip.html" class="text-[#C9A04C]/70 hover:text-[#C9A04C] transition-colors text-sm tracking-widest uppercase">&larr; The Flip</a>
+    <nav class="bg-[#3C0B24] border-b-4 border-[#C9A04C] py-6 sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-8 flex justify-between items-center">
+            <a href="index.html" class="header-font text-3xl text-[#C9A04C]">← CONTRANYM CODEX</a>
+            <a href="the-flip.html" class="text-[#C9A04C]">THE FLIP</a>
         </div>
     </nav>
 
-    <div class="max-w-5xl mx-auto px-8 py-16 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+    <div class="max-w-4xl mx-auto px-8 py-20">
+        <h1 class="header-font text-7xl text-[#C9A04C] mb-6">TEMPER</h1>
+        <p class="text-2xl text-[#F5F0E6]/80">To moderate restraint.<br>To harden steel through heat.</p>
 
-            <!-- Left: word + meanings + essay -->
-            <div class="lg:col-span-3">
-                <div class="text-[#C9A04C] text-xs tracking-[0.22em] uppercase mb-4">The Flip &bull; Field Notes &bull; 1 / 15</div>
-                <h1 class="flip-title text-[#C9A04C] select-none">TEMPER</h1>
-                <div class="text-[#F5F0E6]/40 text-sm tracking-widest uppercase mt-3 mb-10">verb</div>
-
-                <!-- Meanings -->
-                <div class="grid grid-cols-2 gap-px bg-[#C9A04C]/20 border border-[#C9A04C]/20 mb-12">
-                    <div class="bg-black/50 p-6">
-                        <div class="text-[#C9A04C] text-xs uppercase tracking-widest mb-3">I.</div>
-                        <p class="text-base leading-snug text-[#F5F0E6]/90">To moderate or restrain</p>
-                    </div>
-                    <div class="bg-black/50 p-6">
-                        <div class="text-[#C9A04C] text-xs uppercase tracking-widest mb-3">II.</div>
-                        <p class="text-base leading-snug text-[#F5F0E6]/90">To harden through heat (as in steel)</p>
-                    </div>
-                </div>
-
-                <!-- Essay -->
-                <div class="space-y-5 text-lg leading-relaxed">
-                    <p>Of course "temper" means both to moderate and to harden through fire. English has been coaching women on this particular contradiction for centuries.</p>
-                    <p>Temper your ambition. Temper your anger. Temper your volume. But also — somehow — become tempered steel. Resilient. Unbreakable. Forged in the exact conditions we're told to soften.</p>
-                    <p>The word already contains the lie that suppression and strengthening are indistinguishable.</p>
-                </div>
-
-                <!-- Tags -->
-                <div class="flex flex-wrap gap-2 mt-10 items-center">
-                    <span class="text-xs uppercase tracking-widest text-[#C9A04C]/40 mr-1">Tags</span>
-                    <span class="text-xs text-[#C9A04C]/60 border border-[#C9A04C]/25 px-2 py-1 tracking-wider">femininity</span>
-                    <span class="text-xs text-[#C9A04C]/60 border border-[#C9A04C]/25 px-2 py-1 tracking-wider">pressure</span>
-                    <span class="text-xs text-[#C9A04C]/60 border border-[#C9A04C]/25 px-2 py-1 tracking-wider">gaslighting</span>
-                </div>
-            </div>
-
-            <!-- Right: field notes + navigation -->
-            <div class="lg:col-span-2 lg:border-l border-[#C9A04C]/30 lg:pl-12">
-                <div class="sticky top-24 space-y-10">
-
-                    <div class="border border-[#C9A04C]/40 p-6 bg-black/30">
-                        <div class="text-[#C9A04C] text-xs uppercase tracking-widest mb-4">Field Note</div>
-                        <p class="italic text-sm leading-relaxed text-[#F5F0E6]/75">&ldquo;A perfect word for femininity under institutional pressure.&rdquo;</p>
-                    </div>
-
-                    <div class="space-y-3">
-                        <div class="text-[#C9A04C] text-xs uppercase tracking-widest mb-4">The Flip Series</div>
-                        
-                        <a href="weather.html" class="block text-[#C9A04C]/60 hover:text-[#C9A04C] transition-colors text-sm">Weather &rarr;</a>
-                    </div>
-
-                    <div class="pt-4 border-t border-[#C9A04C]/20">
-                        <a href="index.html" class="text-[#C9A04C]/50 hover:text-[#C9A04C] transition-colors text-xs uppercase tracking-widest">All Entries</a>
-                    </div>
-
-                </div>
-            </div>
-
+        <div class="prose prose-invert text-lg leading-relaxed mt-16">
+            <p>Of course "temper" is a contranym. English has been giving women contradictory instructions for centuries, and this word is the perfect manifesto.</p>
+            <p>Temper your ambition. Temper your anger. Temper your volume. Temper your desires. Temper your expectations. Be moderate. Be restrained. Be <em>good</em>.</p>
+            <p>But also — somehow — become <em>tempered steel</em>. Resilient. Sharp. Unbreakable. Forged in the exact same fire we’re told to avoid.</p>
+            
+            <p class="marginalia">The metallurgical metaphor is almost cruel in its precision. The same heat that warps and weakens lesser materials is supposed to strengthen you. Break anyway, and the verdict is immediate: you simply weren’t properly tempered.</p>
+            
+            <p>This is the quiet violence of the word. It rebrands suppression as strength. It tells women that the conditions meant to diminish them are actually character-building exercises. Your Classics background recognizes the ancient pattern immediately: the forge has always been presented as sacred, even while it consumes.</p>
+            
+            <p>Meanwhile, men are allowed to be hot-tempered, quick-tempered, ill-tempered — and still celebrated as passionate. Women must remain even-tempered at all costs, while somehow emerging from the flames harder than before.</p>
+            
+            <p>The word doesn’t just flip. It gaslights with industrial efficiency.</p>
         </div>
-
-        <div class="text-center text-[#C9A04C] my-16 text-2xl tracking-widest">&diams;</div>
-
-        <nav class="flex justify-between items-center pt-8 border-t border-[#C9A04C]/20 text-xs uppercase tracking-widest">
-            <a href="index.html" class="text-[#C9A04C]/60 hover:text-[#C9A04C] transition-colors">&larr; Back to Codex</a>
-            <a href="weather.html" class="text-[#C9A04C]/60 hover:text-[#C9A04C] transition-colors">Weather &rarr;</a>
-        </nav>
-
     </div>
 </body>
 </html>
