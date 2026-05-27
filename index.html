@@ -4,134 +4,183 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Contranym Codex</title>
-  <meta name="description" content="A codex of contranyms — words that carry two opposite meanings within themselves.">
+  <meta name="description" content="A cabinet of linguistic curiosities — words that contain their own opposite. One word. Two truths. No loyalty.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<div class="site-wrap">
+<nav class="site-nav" role="navigation" aria-label="Primary navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="The Contranym Codex — home">
+      <span class="logo-the">The</span>
+      <span class="logo-title">Contranym Codex</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link active" aria-current="page">Codex</a>
+      <a href="the-flip.html" class="nav-link">Essay</a>
+    </div>
+    <button class="random-specimen" type="button" aria-label="Open a random specimen from the codex">
+      Random Specimen
+    </button>
+  </div>
+</nav>
 
-  <header class="site-header">
-    <a href="index.html" class="logotype">The Contranym Codex</a>
-    <nav class="site-nav">
-      <a href="index.html" class="active">Codex</a>
-      <a href="the-flip.html">Essay</a>
-    </nav>
-  </header>
+<main>
 
-  <main>
-
-    <section class="hero">
-      <p class="hero-eyebrow">A lexical curiosity</p>
-      <h1 class="hero-title">
-        <span class="the">The</span>
-        Contranym Codex
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="site-wrap">
+      <p class="hero-eyebrow">A lexical cabinet of curiosities</p>
+      <h1 class="hero-title" id="hero-heading">
+        One word.<br>
+        Two truths.<br>
+        No loyalty.
       </h1>
       <div class="hero-intro">
-        <p class="lede">Some words contain their own opposites — seeds of contradiction folded into a single form.</p>
-        <p>A <em>contranym</em> (also called an auto-antonym or Janus word) is a word with two definitions that directly contradict each other. <em>Sanction</em> can mean to approve or to penalise. <em>Cleave</em> means both to cling together and to split apart. <em>Dust</em> can mean to add a fine layer or to remove one.</p>
-        <p>This codex collects them — each entry laid out so both meanings face each other at once.</p>
+        <p>A <em>contranym</em> is a word that contains its own opposite. <em>Sanction</em> blesses and punishes. <em>Cleave</em> splits and clings. <em>Bound</em> escapes and is imprisoned. These are Janus words — double-faced, loyal to nothing.</p>
       </div>
-      <a href="the-flip.html" class="cta-link">Read the essay</a>
-    </section>
+    </div>
+
+    <div class="hero-flip-wrap">
+      <div
+        class="hero-flip-card"
+        tabindex="0"
+        role="button"
+        aria-pressed="false"
+        aria-label="CLEAVE — click or press Enter to flip between its two opposite meanings"
+      >
+        <div class="hero-flip-inner" aria-hidden="true">
+
+          <div class="hero-flip-face hero-flip-front">
+            <span class="flip-word vhs-jitter">CLEAVE</span>
+            <span class="flip-def">to split apart &mdash; to sever</span>
+            <span class="flip-sense">Meaning I</span>
+          </div>
+
+          <div class="hero-flip-face hero-flip-back">
+            <span class="flip-word">CLEAVE</span>
+            <span class="flip-def">to cling &mdash; to hold fast</span>
+            <span class="flip-sense">Meaning II</span>
+          </div>
+
+        </div>
+      </div>
+      <p class="flip-hint" aria-hidden="true">&updownarrow; click to flip</p>
+    </div>
+
+    <div class="site-wrap">
+      <a href="the-flip.html" class="cta-btn">Read the essay</a>
+    </div>
+  </section>
+
+  <div class="site-wrap">
 
     <hr class="rule-gold">
 
-    <section>
-      <p class="section-label">Entries</p>
+    <section class="codex-section" aria-labelledby="specimens-label">
+      <p class="section-label" id="specimens-label">Specimens from the Vault</p>
 
-      <div class="codex-grid">
+      <div class="codex-grid" role="list">
 
-        <a href="bound.html" class="codex-entry">
+        <a href="bound.html" class="codex-entry" role="listitem">
           <span class="entry-word">bound</span>
           <span class="entry-pos">adjective / verb</span>
           <ul class="entry-defs">
             <li data-n="I.">Heading toward a destination</li>
             <li data-n="II.">Restricted; unable to move</li>
           </ul>
-          <span class="entry-arrow">→</span>
+          <span class="entry-arrow" aria-hidden="true">&rarr;</span>
         </a>
 
-        <a href="#" class="codex-entry" aria-disabled="true">
+        <a href="#" class="codex-entry" aria-disabled="true" role="listitem" tabindex="-1">
           <span class="entry-word">cleave</span>
           <span class="entry-pos">verb</span>
           <ul class="entry-defs">
             <li data-n="I.">To split or sever</li>
             <li data-n="II.">To cling or adhere closely</li>
           </ul>
-          <span class="entry-arrow">→</span>
+          <span class="entry-arrow" aria-hidden="true">&rarr;</span>
         </a>
 
-        <a href="#" class="codex-entry" aria-disabled="true">
+        <a href="#" class="codex-entry" aria-disabled="true" role="listitem" tabindex="-1">
           <span class="entry-word">sanction</span>
           <span class="entry-pos">noun / verb</span>
           <ul class="entry-defs">
             <li data-n="I.">Official permission or approval</li>
             <li data-n="II.">A penalty imposed for a violation</li>
           </ul>
-          <span class="entry-arrow">→</span>
+          <span class="entry-arrow" aria-hidden="true">&rarr;</span>
         </a>
 
-        <a href="#" class="codex-entry" aria-disabled="true">
+        <a href="#" class="codex-entry" aria-disabled="true" role="listitem" tabindex="-1">
           <span class="entry-word">dust</span>
           <span class="entry-pos">verb</span>
           <ul class="entry-defs">
             <li data-n="I.">To sprinkle with a fine powder</li>
             <li data-n="II.">To remove dust from a surface</li>
           </ul>
-          <span class="entry-arrow">→</span>
+          <span class="entry-arrow" aria-hidden="true">&rarr;</span>
         </a>
 
-        <a href="#" class="codex-entry" aria-disabled="true">
+        <a href="#" class="codex-entry" aria-disabled="true" role="listitem" tabindex="-1">
           <span class="entry-word">left</span>
           <span class="entry-pos">verb / adjective</span>
           <ul class="entry-defs">
             <li data-n="I.">Departed; went away</li>
             <li data-n="II.">Remaining; still present</li>
           </ul>
-          <span class="entry-arrow">→</span>
+          <span class="entry-arrow" aria-hidden="true">&rarr;</span>
         </a>
 
-        <a href="#" class="codex-entry" aria-disabled="true">
+        <a href="#" class="codex-entry" aria-disabled="true" role="listitem" tabindex="-1">
           <span class="entry-word">weather</span>
           <span class="entry-pos">verb</span>
           <ul class="entry-defs">
             <li data-n="I.">To endure and survive hardship</li>
             <li data-n="II.">To erode or wear away</li>
           </ul>
-          <span class="entry-arrow">→</span>
+          <span class="entry-arrow" aria-hidden="true">&rarr;</span>
         </a>
 
-        <a href="#" class="codex-entry" aria-disabled="true">
+        <a href="#" class="codex-entry" aria-disabled="true" role="listitem" tabindex="-1">
           <span class="entry-word">screen</span>
           <span class="entry-pos">verb</span>
           <ul class="entry-defs">
             <li data-n="I.">To display or show publicly</li>
             <li data-n="II.">To hide, conceal, or block</li>
           </ul>
-          <span class="entry-arrow">→</span>
+          <span class="entry-arrow" aria-hidden="true">&rarr;</span>
         </a>
 
-        <a href="#" class="codex-entry" aria-disabled="true">
+        <a href="#" class="codex-entry" aria-disabled="true" role="listitem" tabindex="-1">
           <span class="entry-word">trim</span>
           <span class="entry-pos">verb</span>
           <ul class="entry-defs">
             <li data-n="I.">To cut away; to reduce</li>
             <li data-n="II.">To add decorative edging to</li>
           </ul>
-          <span class="entry-arrow">→</span>
+          <span class="entry-arrow" aria-hidden="true">&rarr;</span>
         </a>
 
       </div>
     </section>
 
-  </main>
+  </div>
 
-  <footer class="site-footer">
-    <div>The Contranym Codex &mdash; words divided against themselves</div>
-  </footer>
+</main>
 
-</div>
+<footer class="site-footer">
+  <div class="site-wrap">
+    <div class="footer-inner">
+      <span>The Contranym Codex</span>
+      <span class="footer-em">words divided against themselves</span>
+    </div>
+  </div>
+</footer>
 
+<div class="curtain" aria-hidden="true"></div>
+<script src="js/main.js"></script>
 </body>
 </html>
