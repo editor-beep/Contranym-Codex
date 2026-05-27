@@ -3,118 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WEATHER &mdash; The Flip &bull; Contranym Codex</title>
+    <title>WEATHER — Contranym Codex</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Playfair+Display:wght@400;700&display=swap');
         body {
             font-family: 'EB Garamond', serif;
             background: #2C2C2C;
             color: #F5F0E6;
-            background-image: linear-gradient(rgba(60,11,36,0.85), rgba(60,11,36,0.85)), url('https://picsum.photos/id/1015/2000/1200');
+            background-image: linear-gradient(rgba(60,11,36,0.88), rgba(60,11,36,0.88)), url('https://picsum.photos/id/1015/2000/1200');
             background-size: cover;
             background-attachment: fixed;
         }
         body::before {
             content: '';
-            position: fixed;
+            position: absolute;
             inset: 0;
             background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px);
             animation: filmgrain 0.8s steps(5) infinite;
             pointer-events: none;
-            z-index: 0;
         }
-        @keyframes filmgrain { 0% { background-position: 0 0; } 100% { background-position: 100px 100px; } }
+        @keyframes filmgrain { 0% { background-position: 0 0; } 100% { background-position: 120px 120px; } }
         .header-font { font-family: 'Playfair Display', serif; letter-spacing: 0.15em; }
-        .flip-title {
-            font-size: clamp(3.5rem, 10vw, 6.5rem);
-            line-height: 0.85;
-            animation: lynchJitter 4s infinite alternate;
-            font-family: 'Playfair Display', serif;
-            letter-spacing: 0.08em;
-        }
-        @keyframes lynchJitter {
-            0% { transform: translate(0,0) rotate(-0.4deg); }
-            100% { transform: translate(5px, -2px) rotate(0.4deg); }
-        }
+        .marginalia { font-style: italic; color: #C9A04C; border-left: 4px solid #1A3C45; padding-left: 1.75rem; margin: 2rem 0; }
     </style>
 </head>
 <body class="min-h-screen relative">
-
-    <nav class="bg-[#3C0B24] py-6 border-b-4 border-[#C9A04C] sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-8 flex justify-between items-center">
-            <a href="index.html" class="header-font text-3xl text-[#C9A04C]">CONTRANYM CODEX</a>
-            <a href="the-flip.html" class="text-[#C9A04C]/70 hover:text-[#C9A04C] transition-colors text-sm tracking-widest uppercase">&larr; The Flip</a>
+    <nav class="bg-[#3C0B24] border-b-4 border-[#C9A04C] py-6 sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-8 flex justify-between items-center">
+            <a href="index.html" class="header-font text-3xl text-[#C9A04C]">← CONTRANYM CODEX</a>
+            <a href="the-flip.html" class="text-[#C9A04C]">THE FLIP</a>
         </div>
     </nav>
 
-    <div class="max-w-5xl mx-auto px-8 py-16 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+    <div class="max-w-4xl mx-auto px-8 py-20">
+        <h1 class="header-font text-7xl text-[#C9A04C] mb-6">WEATHER</h1>
+        <p class="text-2xl text-[#F5F0E6]/80">To endure damage.<br>To erode from exposure.</p>
 
-            <!-- Left: word + meanings + essay -->
-            <div class="lg:col-span-3">
-                <div class="text-[#C9A04C] text-xs tracking-[0.22em] uppercase mb-4">The Flip &bull; Field Notes &bull; 2 / 15</div>
-                <h1 class="flip-title text-[#C9A04C] select-none">WEATHER</h1>
-                <div class="text-[#F5F0E6]/40 text-sm tracking-widest uppercase mt-3 mb-10">verb</div>
-
-                <!-- Meanings -->
-                <div class="grid grid-cols-2 gap-px bg-[#C9A04C]/20 border border-[#C9A04C]/20 mb-12">
-                    <div class="bg-black/50 p-6">
-                        <div class="text-[#C9A04C] text-xs uppercase tracking-widest mb-3">I.</div>
-                        <p class="text-base leading-snug text-[#F5F0E6]/90">To endure damage</p>
-                    </div>
-                    <div class="bg-black/50 p-6">
-                        <div class="text-[#C9A04C] text-xs uppercase tracking-widest mb-3">II.</div>
-                        <p class="text-base leading-snug text-[#F5F0E6]/90">To erode from exposure</p>
-                    </div>
-                </div>
-
-                <!-- Essay -->
-                <div class="space-y-5 text-lg leading-relaxed">
-                    <p>This one feels almost too large. Especially for Midwestern writing. Women are expected to "weather" relationships, workplaces, motherhood, illness, aging. The word frames deterioration as competence.</p>
-                    <p>"She weathers it so well." Translation: The conditions are corrosive, but look how beautifully she's disappearing into them.</p>
-                </div>
-
-                <!-- Tags -->
-                <div class="flex flex-wrap gap-2 mt-10 items-center">
-                    <span class="text-xs uppercase tracking-widest text-[#C9A04C]/40 mr-1">Tags</span>
-                    <span class="text-xs text-[#C9A04C]/60 border border-[#C9A04C]/25 px-2 py-1 tracking-wider">endurance</span>
-                    <span class="text-xs text-[#C9A04C]/60 border border-[#C9A04C]/25 px-2 py-1 tracking-wider">erosion</span>
-                    <span class="text-xs text-[#C9A04C]/60 border border-[#C9A04C]/25 px-2 py-1 tracking-wider">midwest</span>
-                </div>
-            </div>
-
-            <!-- Right: field notes + navigation -->
-            <div class="lg:col-span-2 lg:border-l border-[#C9A04C]/30 lg:pl-12">
-                <div class="sticky top-24 space-y-10">
-
-                    <div class="border border-[#C9A04C]/40 p-6 bg-black/30">
-                        <div class="text-[#C9A04C] text-xs uppercase tracking-widest mb-4">Field Note</div>
-                        <p class="italic text-sm leading-relaxed text-[#F5F0E6]/75">&ldquo;Competence through erosion.&rdquo;</p>
-                    </div>
-
-                    <div class="space-y-3">
-                        <div class="text-[#C9A04C] text-xs uppercase tracking-widest mb-4">The Flip Series</div>
-                        <a href="temper.html" class="block text-[#C9A04C]/60 hover:text-[#C9A04C] transition-colors text-sm">&larr; Temper</a>
-                        <a href="screen.html" class="block text-[#C9A04C]/60 hover:text-[#C9A04C] transition-colors text-sm">Screen &rarr;</a>
-                    </div>
-
-                    <div class="pt-4 border-t border-[#C9A04C]/20">
-                        <a href="index.html" class="text-[#C9A04C]/50 hover:text-[#C9A04C] transition-colors text-xs uppercase tracking-widest">All Entries</a>
-                    </div>
-
-                </div>
-            </div>
-
+        <div class="prose prose-invert text-lg leading-relaxed mt-16">
+            <p>In the Midwest, we understand weathering. We respect it. We mythologize it.</p>
+            <p>To weather = to endure damage and remain standing. To weather = to be slowly eroded by exposure. The word performs its quiet betrayal with Midwestern politeness.</p>
+            
+            <p class="marginalia">Women are expected to weather everything — bad relationships, hostile workplaces, motherhood, illness, aging, institutional indifference — and we are congratulated for how gracefully we deteriorate. “She weathers it so well.”</p>
+            
+            <p>Translation: The conditions are corrosive, but look how beautifully she’s disappearing into them. Survival is aestheticized. Slow erosion is rebranded as noble competence.</p>
+            
+            <p>This is linguistic gaslighting at its most atmospheric. The word turns the cost of endurance into evidence of character. It frames deterioration as virtue. And it does so with the gentle inevitability of rain on limestone.</p>
+            
+            <p>Your Gender Studies lens sees it clearly: who is praised for weathering, and who is allowed to rage against the storm? The pattern is ancient, and the language protects it beautifully.</p>
         </div>
-
-        <div class="text-center text-[#C9A04C] my-16 text-2xl tracking-widest">&diams;</div>
-
-        <nav class="flex justify-between items-center pt-8 border-t border-[#C9A04C]/20 text-xs uppercase tracking-widest">
-            <a href="temper.html" class="text-[#C9A04C]/60 hover:text-[#C9A04C] transition-colors">&larr; Temper</a>
-            <a href="screen.html" class="text-[#C9A04C]/60 hover:text-[#C9A04C] transition-colors">Screen &rarr;</a>
-        </nav>
-
     </div>
 </body>
 </html>
