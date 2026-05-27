@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAMES — Contranym Codex</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #2C2C2C;
+            color: #F5F0E6;
+            background-image: linear-gradient(rgba(60,11,36,0.9), rgba(60,11,36,0.9)), url('https://picsum.photos/id/1015/2000/1200');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px);
+            animation: filmgrain 0.8s steps(5) infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        @keyframes filmgrain { 0% { background-position: 0 0; } 100% { background-position: 120px 120px; } }
+        .header-font { font-family: 'Playfair Display', serif; letter-spacing: 0.15em; }
+
+        .game-card { transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); }
+        .game-card:hover { transform: rotate(1deg) scale(1.03); box-shadow: 0 0 30px rgba(201,160,76,0.35); }
+
+        /* ---- Modals ---- */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(28, 4, 17, 0.97);
+            z-index: 200;
+            display: none;
+            overflow-y: auto;
+        }
+        .modal.open { display: block; }
+
+        /* ---- Flip Game ---- */
+        .choice-btn {
+            transition: all 0.2s ease;
+            border: 1px solid rgba(201,160,76,0.25);
+        }
+        .choice-btn:hover:not(:disabled) {
+            border-color: #C9A04C;
+            background: rgba(201,160,76,0.08);
+        }
+        .choice-btn:disabled { cursor: default; }
+        .choice-btn.surface  { border-color: #C9A04C;              background: rgba(201,160,76,0.1); }
+        .choice-btn.flip     { border-color: rgba(245,240,230,0.7); background: rgba(245,240,230,0.05); }
+        .choice-btn.wrong    { border-color: rgba(201,160,76,0.15); opacity: 0.45; }
+
+        /* ---- Escape Room ---- */
+        .room-choice {
+            transition: all 0.2s ease;
+            border: 1px solid rgba(201,160,76,0.3);
+        }
+        .room-choice:hover { background: rgba(201,160,76,0.08); border-color: #C9A04C; }
+
+        /* ---- Screen Test ---- */
+        .answer-btn { transition: all 0.2s ease; }
+        .answer-official { border: 1px solid rgba(201,160,76,0.35); }
+        .answer-real     { border: 1px solid rgba(245,240,230,0.2); }
+        .answer-btn:hover { background: rgba(201,160,76,0.07); }
+
+        /* ---- Shared ---- */
+        .word-highlight {
+            color: #C9A04C;
+            text-decoration: underline;
+            text-decoration-color: rgba(201,160,76,0.35);
+            text-underline-offset: 4px;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.35s ease forwards; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+        .cursor { animation: blink 1.1s step-end infinite; }
+    </style>
+</head>
+<body class="min-h-screen relative">
+
+    <nav class="bg-[#3C0B24] border-b-4 border-[#C9A04C] py-6 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-8 flex justify-between items-center">
+            <a href="index.html" class="header-font text-3xl text-[#C9A04C]">← CONTRANYM CODEX</a>
+            <div class="text-[#C9A04C] tracking-widest text-sm uppercase">Games Room</div>
+        </div>
+    </nav>
+
+    <div class="max-w-5xl mx-auto px-8 py-20 relative z-10">
+        <h1 class="header-font text-6xl text-center mb-6 text-[#C9A04C]">THE GAMES ROOM</h1>
+        <p class="text-center text-xl max-w-2xl mx-auto text-[#F5F0E6]/80">Enter if you dare. Language is already gaslighting you — these games just make it explicit.</p>
+
+        <div class="grid md:grid-cols-2 gap-10 mt-20">
+
+            <div class="game-card bg-[#3C0B24] p-10 border-2 border-[#C9A04C]">
+                <div class="text-[#C9A04C]/50 text-xs tracking-[0.2em] uppercase mb-3">Game I</div>
+                <h2 class="header-font text-4xl mb-4 text-[#C9A04C]">THE FLIP GAME</h2>
+                <p class="mb-6 text-[#F5F0E6]/80 leading-relaxed">Seven rounds. One word, two meanings. Identify which reading is operating — but be warned: sometimes it's both, and the language is laughing at you.</p>
+                <button onclick="openFlipGame()"
+                        class="px-8 py-4 border-2 border-[#C9A04C] hover:bg-[#C9A04C] hover:text-[#3C0B24] transition-all tracking-widest uppercase text-sm">
+                    PLAY THE FLIP →
+                </button>
+            </div>
+
+            <div class="game-card bg-[#3C0B24] p-10 border-2 border-[#C9A04C]">
+                <div class="text-[#C9A04C]/50 text-xs tracking-[0.2em] uppercase mb-3">Game II</div>
+                <h2 class="header-font text-4xl mb-4 text-[#C9A04C]">BOUND / UNBOUND</h2>
+                <p class="mb-6 text-[#F5F0E6]/80 leading-relaxed">A Lynchian text escape room. Every object is a contranym. Every door is ambiguous. You have been here before. You will be here again.</p>
+                <button onclick="openEscapeRoom()"
+                        class="px-8 py-4 border-2 border-[#C9A04C] hover:bg-[#C9A04C] hover:text-[#3C0B24] transition-all tracking-widest uppercase text-sm">
+                    ENTER THE ROOM →
+                </button>
+            </div>
+
+            <div class="game-card bg-[#3C0B24] p-10 border-2 border-[#C9A04C] md:col-span-2 md:max-w-lg md:mx-auto">
+                <div class="text-[#C9A04C]/50 text-xs tracking-[0.2em] uppercase mb-3">Game III</div>
+                <h2 class="header-font text-4xl mb-4 text-[#C9A04C]">SCREEN TEST</h2>
+                <p class="mb-6 text-[#F5F0E6]/80 leading-relaxed">A routine wellness check. Five questions. Give the right answers. Your internal monologue is your own concern and will not be recorded. Probably.</p>
+                <button onclick="openScreenTest()"
+                        class="px-8 py-4 border-2 border-[#C9A04C] hover:bg-[#C9A04C] hover:text-[#3C0B24] transition-all tracking-widest uppercase text-sm">
+                    BEGIN SCREENING →
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ============================= MODAL: THE FLIP GAME ============================= -->
+    <div id="flip-modal" class="modal">
+        <div class="max-w-2xl mx-auto px-8 py-12">
+            <div class="flex justify-between items-center mb-12">
+                <div>
+                    <div class="text-[#C9A04C]/50 text-xs tracking-[0.2em] uppercase mb-1">Game I</div>
+                    <h2 class="header-font text-3xl text-[#C9A04C]">THE FLIP GAME</h2>
+                </div>
+                <button onclick="closeModal('flip-modal')"
+                        class="text-[#C9A04C]/50 hover:text-[#C9A04C] transition-colors text-xl px-3 py-2">✕</button>
+            </div>
+            <div id="flip-content"></div>
+        </div>
+    </div>
+
+
+    <!-- ============================= MODAL: BOUND / UNBOUND ============================= -->
+    <div id="escape-modal" class="modal">
+        <div class="max-w-2xl mx-auto px-8 py-12">
+            <div class="flex justify-between items-center mb-12">
+                <div>
+                    <div class="text-[#C9A04C]/50 text-xs tracking-[0.2em] uppercase mb-1">Game II</div>
+                    <h2 class="header-font text-3xl text-[#C9A04C]">BOUND / UNBOUND</h2>
+                </div>
+                <button onclick="closeModal('escape-modal')"
+                        class="text-[#C9A04C]/50 hover:text-[#C9A04C] transition-colors text-xl px-3 py-2">✕</button>
+            </div>
+            <div id="escape-content"></div>
+        </div>
+    </div>
+
+
+    <!-- ============================= MODAL: SCREEN TEST ============================= -->
+    <div id="screen-modal" class="modal">
+        <div class="max-w-2xl mx-auto px-8 py-12">
+            <div class="flex justify-between items-center mb-12">
+                <div>
+                    <div class="text-[#C9A04C]/50 text-xs tracking-[0.2em] uppercase mb-1">Game III</div>
+                    <h2 class="header-font text-3xl text-[#C9A04C]">SCREEN TEST</h2>
+                </div>
+                <button onclick="closeModal('screen-modal')"
+                        class="text-[#C9A04C]/50 hover:text-[#C9A04C] transition-colors text-xl px-3 py-2">✕</button>
+            </div>
+            <div id="screen-content"></div>
+        </div>
+    </div>
+
+
+    <script>
+    // ── Modal helpers ──────────────────────────────────────────────────────────
+    function openModal(id) {
+        document.getElementById(id).classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModal(id) {
+        document.getElementById(id).classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+
+    // ══════════════════════════════════════════════════════════════════════════
+    // GAME 1 — THE FLIP GAME
+    // ══════════════════════════════════════════════════════════════════════════
+
+    const flipRounds = [
+        {
+            word: 'CLEARED',
+            sentence: `The village was <span class="word-highlight">cleared</span> to make way for the new development.`,
+            choices: [
+                { text: 'Officially approved for demolition',      type: 'surface',
+                  commentary: 'Yes. The bureaucratic sense. Clean paperwork. Nothing to see here.' },
+                { text: 'Emptied — the residents were removed',    type: 'flip',
+                  commentary: 'There it is. CLEARED as erasure. You found the body under the language.' },
+                { text: 'Made transparent; the view was opened up', type: 'wrong',
+                  commentary: 'Adjacent. Evocative. Not quite.' }
+            ],
+            reveal: 'CLEARED contains both outcomes in its chest pocket. Approval and removal, indistinguishable. The paperwork clears itself.'
+        },
+        {
+            word: 'BOUND',
+            sentence: `She was <span class="word-highlight">bound</span> for greater things.`,
+            choices: [
+                { text: 'Heading toward; destined for something better',    type: 'surface',
+                  commentary: 'The aspirational reading. The arrow pointed at the future.' },
+                { text: 'Constrained; unable to escape her circumstances',  type: 'flip',
+                  commentary: 'The other arrow. Pointed nowhere. The word permits both without blinking.' },
+                { text: 'Jumping vigorously in the direction of success',   type: 'wrong',
+                  commentary: 'Only if this is a motivational poster. It isn\'t.' }
+            ],
+            reveal: 'BOUND for greater things. Destined toward them. Trapped in the direction of them. The sentence never says which.'
+        },
+        {
+            word: 'SCREEN',
+            sentence: `The process was designed to <span class="word-highlight">screen</span> applicants before the final interview.`,
+            choices: [
+                { text: 'Protect the organisation from unsuitable candidates',       type: 'surface',
+                  commentary: 'The official purpose. Risk management. Order maintained.' },
+                { text: 'Put applicants under surveillance; make them visible and legible', type: 'flip',
+                  commentary: 'Precisely. SCREENING as display. The candidate performs. The machine watches.' },
+                { text: 'Show applicants a film about company culture',              type: 'wrong',
+                  commentary: 'No. Although some onboarding processes come disturbingly close.' }
+            ],
+            reveal: 'SCREEN: to protect (the organisation) by exposing (the applicant) to evaluation. The shield is also the searchlight.'
+        },
+        {
+            word: 'SANCTIONED',
+            sentence: `The committee <span class="word-highlight">sanctioned</span> the new policy immediately.`,
+            choices: [
+                { text: 'Officially approved and authorised it',    type: 'surface',
+                  commentary: 'The standard reading. The rubber stamp descends. Bureaucracy functions.' },
+                { text: 'Penalised or restricted the policy',       type: 'flip',
+                  commentary: 'The contranym reading. Without further context, this sentence genuinely works both ways. Welcome to English.' },
+                { text: 'Delayed the policy for additional review', type: 'wrong',
+                  commentary: 'No. Though that would be its own kind of governance.' }
+            ],
+            reveal: 'SANCTION is the cleanest double agent in the language. Approval and penalty in identical dress. The committee acted. We cannot say how.'
+        },
+        {
+            word: 'FINE',
+            sentence: `She said she was <span class="word-highlight">fine</span>.`,
+            choices: [
+                { text: 'Excellent; genuinely well; things are good',     type: 'surface',
+                  commentary: 'The official reading. Accepted without follow-up questions.' },
+                { text: 'Barely functional; the minimum viable self',     type: 'flip',
+                  commentary: 'The honest reading. FINE as the word you use when more specific words have been exhausted.' },
+                { text: 'Subject to a financial penalty of some kind',    type: 'wrong',
+                  commentary: 'Technically FINE can mean this. Not in this sentence. Not usually.' }
+            ],
+            reveal: 'FINE is doing enormous structural work in that sentence. It means everything is acceptable. It means she has stopped trying to explain which.'
+        },
+        {
+            word: 'TEMPERED',
+            sentence: `Her response was carefully <span class="word-highlight">tempered</span>.`,
+            choices: [
+                { text: 'Moderated; restrained; made less extreme',              type: 'surface',
+                  commentary: 'The polite reading. She showed appropriate restraint. Professionalism achieved.' },
+                { text: 'Hardened through sustained pressure; forged by ordeal', type: 'flip',
+                  commentary: 'The metallurgical reading. She was made stronger by whatever preceded this sentence.' },
+                { text: 'Made tuneful; adjusted to perfect pitch',               type: 'wrong',
+                  commentary: 'Musical temperament. Adjacent, beautiful, and not it.' }
+            ],
+            reveal: 'TEMPERED: she restrained herself, or she was strengthened by having to. The word doesn\'t say which process came first.'
+        },
+        {
+            word: 'LEFT',
+            sentence: `He <span class="word-highlight">left</span> everything he had to her.`,
+            choices: [
+                { text: 'Departed; abandoned everything and went away',        type: 'surface',
+                  commentary: 'He walked away. What he left behind was hers. The emphasis is on his going.' },
+                { text: 'Bequeathed; what remained after he was gone',         type: 'flip',
+                  commentary: 'He was no longer present, and what remained — what was left — was hers. The grief shifts register.' },
+                { text: 'Positioned his belongings to the left-hand side',     type: 'wrong',
+                  commentary: 'The directional sense. No.' }
+            ],
+            reveal: 'He LEFT everything. He departed and left behind, simultaneously. One word. Two griefs. The same sentence.'
+        }
+    ];
+
+    let flipState = { round: 0, surfaces: 0, flips: 0, wrongs: 0, answered: false };
+
+    function openFlipGame() {
+        flipState = { round: 0, surfaces: 0, flips: 0, wrongs: 0, answered: false };
+        openModal('flip-modal');
+        renderFlipRound();
+    }
+
+    function renderFlipRound() {
+        const r = flipRounds[flipState.round];
+        const total = flipRounds.length;
+
+        const dots = flipRounds.map((_, i) => {
+            const cls = i < flipState.round
+                ? 'bg-[#C9A04C]'
+                : i === flipState.round
+                    ? 'bg-[#C9A04C]/60 ring-1 ring-[#C9A04C]'
+                    : 'bg-[#C9A04C]/20';
+            return `<span class="inline-block w-2 h-2 rounded-full ${cls}"></span>`;
+        }).join('');
+
+        const choicesHtml = r.choices.map((c, i) =>
+            `<button onclick="answerFlip(${i})"
+                class="choice-btn w-full text-left px-6 py-5 mb-3 block text-lg leading-snug">
+                ${c.text}
+            </button>`
+        ).join('');
+
+        document.getElementById('flip-content').innerHTML = `
+            <div class="fade-in">
+                <div class="flex items-center gap-3 mb-10">
+                    <span class="text-[#C9A04C]/50 text-xs uppercase tracking-widest">Round ${flipState.round + 1} of ${total}</span>
+                    <div class="flex gap-2">${dots}</div>
+                </div>
+                <p class="text-2xl leading-relaxed italic mb-8">"${r.sentence}"</p>
+                <p class="text-sm uppercase tracking-widest text-[#C9A04C]/70 mb-6">What does <strong class="text-[#C9A04C]">${r.word}</strong> mean in this sentence?</p>
+                <div id="flip-choices">${choicesHtml}</div>
+                <div id="flip-feedback"></div>
+            </div>`;
+    }
+
+    function answerFlip(idx) {
+        if (flipState.answered) return;
+        flipState.answered = true;
+
+        const r = flipRounds[flipState.round];
+        const choice = r.choices[idx];
+
+        if (choice.type === 'surface') flipState.surfaces++;
+        else if (choice.type === 'flip') flipState.flips++;
+        else flipState.wrongs++;
+
+        document.querySelectorAll('.choice-btn').forEach((btn, i) => {
+            btn.disabled = true;
+            btn.classList.add(r.choices[i].type);
+        });
+        document.getElementById('flip-choices').style.opacity = '0.6';
+
+        const isLast = flipState.round >= flipRounds.length - 1;
+        document.getElementById('flip-feedback').innerHTML = `
+            <div class="fade-in mt-8 border-l-4 border-[#C9A04C] pl-6">
+                <p class="text-[#C9A04C]/80 italic mb-3">${choice.commentary}</p>
+                <p class="text-[#F5F0E6]/55 text-sm leading-relaxed mb-6">${r.reveal}</p>
+                <button onclick="nextFlipRound()"
+                    class="px-8 py-3 border border-[#C9A04C]/50 hover:border-[#C9A04C] hover:bg-[#C9A04C]/10 transition-all text-sm uppercase tracking-widest text-[#C9A04C]">
+                    ${isLast ? 'See Results →' : 'Next Round →'}
+                </button>
+            </div>`;
+    }
+
+    function nextFlipRound() {
+        flipState.round++;
+        flipState.answered = false;
+        if (flipState.round >= flipRounds.length) renderFlipResults();
+        else renderFlipRound();
+    }
+
+    function renderFlipResults() {
+        const { surfaces, flips, wrongs } = flipState;
+        let verdict, subtext;
+        if (flips >= 5) {
+            verdict = 'LINGUISTICALLY SUSPICIOUS';
+            subtext = 'You kept finding the hidden reading. You were looking for the blade underneath the sentence. This is noted.';
+        } else if (surfaces >= 5) {
+            verdict = 'SURFACE COMPLIANT';
+            subtext = 'You consistently accepted the official reading. The language thanks you for your cooperation.';
+        } else if (wrongs >= 3) {
+            verdict = 'OUTSIDE THE FRAME';
+            subtext = 'You answered incorrectly several times. This may mean you\'re operating at a different register entirely. Or you weren\'t paying attention. Both are fine.';
+        } else {
+            verdict = 'GENUINELY BIFOCAL';
+            subtext = 'You moved between the surface and the flip with equal ease. You live in the ambiguity. It suits you.';
+        }
+
+        document.getElementById('flip-content').innerHTML = `
+            <div class="fade-in text-center">
+                <div class="text-[#C9A04C]/40 text-xs tracking-widest uppercase mb-6">Your Result</div>
+                <h3 class="header-font text-4xl text-[#C9A04C] mb-10">${verdict}</h3>
+                <div class="grid grid-cols-3 gap-6 my-10 max-w-xs mx-auto">
+                    <div>
+                        <div class="text-3xl text-[#C9A04C]">${surfaces}</div>
+                        <div class="text-xs uppercase tracking-widest text-[#F5F0E6]/40 mt-1">Surface</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl text-[#F5F0E6]">${flips}</div>
+                        <div class="text-xs uppercase tracking-widest text-[#F5F0E6]/40 mt-1">The Flip</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl text-[#F5F0E6]/40">${wrongs}</div>
+                        <div class="text-xs uppercase tracking-widest text-[#F5F0E6]/40 mt-1">Wrong Room</div>
+                    </div>
+                </div>
+                <p class="text-lg text-[#F5F0E6]/65 leading-relaxed max-w-md mx-auto mb-10 italic">${subtext}</p>
+                <div class="flex gap-4 justify-center">
+                    <button onclick="openFlipGame()"
+                        class="px-8 py-3 border border-[#C9A04C]/50 hover:border-[#C9A04C] hover:bg-[#C9A04C]/10 transition-all text-sm uppercase tracking-widest text-[#C9A04C]">
+                        Play Again
+                    </button>
+                    <button onclick="closeModal('flip-modal')"
+                        class="px-8 py-3 border border-[#F5F0E6]/15 hover:border-[#F5F0E6]/40 transition-all text-sm uppercase tracking-widest text-[#F5F0E6]/50">
+                        Exit
+                    </button>
+                </div>
+            </div>`;
+    }
+
+
+    // ══════════════════════════════════════════════════════════════════════════
+    // GAME 2 — BOUND / UNBOUND (escape room)
+    // ══════════════════════════════════════════════════════════════════════════
+
+    const room = {
+        start: {
+            text: `You are in a room.<br><br>
+The door has a <span class="word-highlight">BOLT</span>. A heavy <span class="word-highlight">SCREEN</span> covers the only window. Against the far wall, a sign flickers above a dark threshold. It reads <span class="word-highlight">LEFT</span>.<br><br>
+On every surface, a thin film of <span class="word-highlight">DUST</span>.`,
+            choices: [
+                { text: 'Examine the BOLT on the door',         next: 'bolt' },
+                { text: 'Approach the SCREEN over the window',  next: 'screen_rm' },
+                { text: 'Go to the sign that reads LEFT',       next: 'left_sign' },
+                { text: 'Look at the DUST on the surfaces',     next: 'dust_rm' }
+            ]
+        },
+        bolt: {
+            text: `The bolt is heavy iron. Old. It slides both ways.<br><br>
+You could <em>bolt</em> it — lock the door, secure yourself inside.<br>
+Or you could <em>bolt</em> — run. Flee. The door is not locked from outside.`,
+            choices: [
+                { text: 'Bolt the door (secure it)', next: 'bolt_locked' },
+                { text: 'Bolt for the door (run)',   next: 'bolt_ran' },
+                { text: '← Step back',               next: 'start' }
+            ]
+        },
+        bolt_locked: {
+            text: `You slide the bolt home. The room is secured.<br><br>
+You are safe. You are also entirely unable to leave.<br><br>
+The sign still flickers on the far wall. <span class="word-highlight">LEFT</span>.<br><br>
+You have secured yourself into the problem.`,
+            choices: [
+                { text: 'Unbolt the door and try again', next: 'start' },
+                { text: 'Go to the sign that reads LEFT', next: 'left_sign' }
+            ]
+        },
+        bolt_ran: {
+            text: `You bolt through the door.<br><br>
+The corridor beyond is identical to the room. The same dimensions. The same sign at the far end, reading <span class="word-highlight">LEFT</span>.<br><br>
+You have escaped into the same room wearing different wallpaper.`,
+            choices: [
+                { text: 'Try again from the beginning', next: 'start' },
+                { text: 'Go to the sign that reads LEFT', next: 'left_sign' }
+            ]
+        },
+        screen_rm: {
+            text: `The screen is thick, woven, opaque. It shields whatever is inside from whatever is outside.<br><br>
+Or — it is a display surface. Something to be watched on. Or watched <em>through</em>.`,
+            choices: [
+                { text: 'Stay behind the screen (take its protection)', next: 'screen_behind' },
+                { text: 'Remove the screen (expose the window)',         next: 'screen_open' },
+                { text: '← Step back',                                   next: 'start' }
+            ]
+        },
+        screen_behind: {
+            text: `You step behind the screen. It is cool and quiet here. Nothing can see you.<br><br>
+Nothing can see you.<br><br>
+Nothing can find you.<br><br>
+After some time you can no longer tell if the screen is protecting you from outside, or concealing you from escape.`,
+            choices: [
+                { text: 'Emerge from behind the screen', next: 'start' },
+                { text: 'Look toward the sign from here', next: 'left_sign' }
+            ]
+        },
+        screen_open: {
+            text: `You pull the screen aside. The window is clear glass.<br><br>
+Beyond it: another room. Identical to this one. A figure stands there, facing a window.<br>
+On the far wall of that room, a sign reads <span class="word-highlight">LEFT</span>.<br><br>
+The figure is you.`,
+            choices: [
+                { text: 'Wave at the figure', next: 'screen_wave' },
+                { text: 'Go to the sign that reads LEFT', next: 'left_sign' }
+            ]
+        },
+        screen_wave: {
+            text: `You wave. The figure waves back.<br><br>
+This is not helpful.<br><br>
+But it is, for a moment, companionable.`,
+            choices: [
+                { text: '← Return to the room', next: 'start' },
+                { text: 'Go to the sign that reads LEFT', next: 'left_sign' }
+            ]
+        },
+        dust_rm: {
+            text: `You crouch and examine the dust.<br><br>
+A thin, even layer. Undisturbed.<br><br>
+To <em>dust</em> the room would be to remove it — clean slate, fresh start.<br>
+To <em>dust</em> could also mean to apply something fine and powdered — like fingerprint powder. Like evidence.<br><br>
+The dust contains no footprints. You have been here, it seems, before.`,
+            choices: [
+                { text: 'Dust the room (clean it)',      next: 'dust_clean' },
+                { text: '← Leave the dust undisturbed', next: 'start' }
+            ]
+        },
+        dust_clean: {
+            text: `You find a cloth. You dust every surface. The room is slightly less haunted.<br><br>
+The sign still flickers. <span class="word-highlight">LEFT</span>.<br><br>
+Something has changed. You cannot say what.`,
+            choices: [
+                { text: '← Look around the cleaner room', next: 'start' },
+                { text: 'Go to the sign that reads LEFT', next: 'left_sign' }
+            ]
+        },
+        left_sign: {
+            text: `The sign reads <span class="word-highlight">LEFT</span> in flickering amber.<br><br>
+You could go <em>left</em> — turn and follow the direction it indicates.<br><br>
+Or — <em>left</em> could mean what remains. What has been left behind. What stays after everything else has departed.<br><br>
+Which EXIT does this sign point to?`,
+            choices: [
+                { text: 'Go left — follow the direction',     next: 'left_dir' },
+                { text: 'Consider what has been left to you', next: 'left_stays' }
+            ]
+        },
+        left_dir: {
+            text: `You turn left.<br>
+The corridor goes left. And left again.<br>
+And left.<br>
+And left.<br><br>
+You are back in the room. The sign flickers. <span class="word-highlight">LEFT</span>.<br><br>
+Navigation did not solve the problem. The problem is the navigation.`,
+            choices: [
+                { text: 'Look at the sign again', next: 'left_sign' },
+                { text: '← Try something else',   next: 'start' }
+            ]
+        },
+        left_stays: {
+            text: `You stop.<br><br>
+You think about what has been left to you. The room. The language. The contradiction inside the word.<br><br>
+<em>Left</em>: what remains after everything else has gone. The word that stays when its speaker has departed.<br><br>
+The door opens.<br><br>
+Not the bolt door. A third door, in the wall you hadn't noticed. Standing open into the dark.<br><br>
+You were never locked in. The exit required an interpretation, not a direction.`,
+            choices: [
+                { text: 'Walk through the open door →', next: 'escaped' }
+            ]
+        },
+        escaped: {
+            text: `<strong class="text-[#C9A04C] text-2xl">You are out.</strong><br><br>
+Beyond the door is not another room. Not a corridor. Something less geometrically certain.<br><br>
+Behind you, the sign flickers once more. <span class="word-highlight">LEFT</span>, it says.<br><br>
+<em>Yes.</em> You think. <em>You are.</em>`,
+            choices: [
+                { text: 'Play again',         next: '__restart' },
+                { text: 'Leave the room',     next: '__exit' }
+            ]
+        }
+    };
+
+    function openEscapeRoom() {
+        openModal('escape-modal');
+        renderRoom('start');
+    }
+
+    function renderRoom(nodeId) {
+        if (nodeId === '__restart') { renderRoom('start'); return; }
+        if (nodeId === '__exit')    { closeModal('escape-modal'); return; }
+
+        const node = room[nodeId];
+        const choicesHtml = node.choices.map(c =>
+            `<button onclick="renderRoom('${c.next}')"
+                class="room-choice w-full text-left px-6 py-4 mb-3 text-base leading-snug">
+                ${c.text}
+            </button>`
+        ).join('');
+
+        document.getElementById('escape-content').innerHTML = `
+            <div class="fade-in">
+                <p class="text-xl leading-relaxed mb-10">${node.text}</p>
+                <div>${choicesHtml}</div>
+            </div>`;
+    }
+
+
+    // ══════════════════════════════════════════════════════════════════════════
+    // GAME 3 — SCREEN TEST
+    // ══════════════════════════════════════════════════════════════════════════
+
+    const screenQs = [
+        {
+            q: 'How are you settling in?',
+            official: 'Really well, thank you — everyone has been wonderfully welcoming.',
+            real:     'I have successfully located the bathrooms and identified which colleagues to avoid at the coffee machine.'
+        },
+        {
+            q: 'Any concerns about your current workload?',
+            official: 'Nothing I can\'t manage. I\'m good at prioritising.',
+            real:     'I have compiled a seventeen-item concern document, sorted by severity and estimated likelihood of rupture.'
+        },
+        {
+            q: 'Do you feel supported here?',
+            official: 'Absolutely. The team has been incredibly supportive.',
+            real:     'Supported the way a load-bearing wall is supported — crucial, invisible, and never thanked.'
+        },
+        {
+            q: 'How are you finding the culture overall?',
+            official: 'It\'s a genuinely positive environment. I\'m glad to be here.',
+            real:     'The culture is a thin crust over significant geological activity. The word "fine" is doing a great deal of structural work.'
+        },
+        {
+            q: 'Is there anything you\'d like to share before we close?',
+            official: 'Just that I\'m really excited about what we\'re building together.',
+            real:     'Everything I\'ve wanted to say has been waiting in the interpretive subtext of every sentence I\'ve spoken today.'
+        }
+    ];
+
+    let screenState = { q: 0, official: 0, real: 0, answers: [] };
+
+    function openScreenTest() {
+        screenState = { q: 0, official: 0, real: 0, answers: [] };
+        openModal('screen-modal');
+        renderScreenQ();
+    }
+
+    function renderScreenQ() {
+        const q = screenQs[screenState.q];
+        const n = screenState.q + 1;
+
+        const bar = screenQs.map((_, i) => {
+            const cls = i < screenState.q ? 'bg-[#C9A04C]' : i === screenState.q ? 'bg-[#C9A04C]/45' : 'bg-[#C9A04C]/15';
+            return `<div class="h-0.5 flex-1 ${cls}"></div>`;
+        }).join('');
+
+        document.getElementById('screen-content').innerHTML = `
+            <div class="fade-in">
+                <div class="flex gap-1.5 mb-10">${bar}</div>
+                <div class="text-[#C9A04C]/50 text-xs uppercase tracking-widest mb-3">Question ${n} of ${screenQs.length}</div>
+                <p class="text-2xl mb-10 italic">"${q.q}"</p>
+                <div class="space-y-4">
+                    <button onclick="answerScreen('official')"
+                        class="answer-btn answer-official w-full text-left px-6 py-5 text-base leading-snug">
+                        <div class="text-[#C9A04C]/50 text-[10px] uppercase tracking-widest mb-2">Official Response</div>
+                        ${q.official}
+                    </button>
+                    <button onclick="answerScreen('real')"
+                        class="answer-btn answer-real w-full text-left px-6 py-5 text-base leading-snug">
+                        <div class="text-[#F5F0E6]/25 text-[10px] uppercase tracking-widest mb-2">Internal Monologue</div>
+                        ${q.real}
+                    </button>
+                </div>
+                <p class="text-[10px] text-[#F5F0E6]/20 mt-8 tracking-widest uppercase">Your response is being recorded<span class="cursor">_</span></p>
+            </div>`;
+    }
+
+    function answerScreen(type) {
+        if (type === 'official') screenState.official++;
+        else screenState.real++;
+        screenState.answers.push(type);
+        screenState.q++;
+        if (screenState.q >= screenQs.length) renderScreenResults();
+        else renderScreenQ();
+    }
+
+    function renderScreenResults() {
+        const { official, real } = screenState;
+        const total = screenQs.length;
+
+        let title, verdict, note, colour;
+        if (official === total) {
+            title   = 'SCREENING COMPLETE';
+            verdict = 'You pass. The screen holds. Every answer was correct. You are approved for unsupervised existence.';
+            note    = '(Are you there?)';
+            colour  = 'text-[#C9A04C]';
+        } else if (real === total) {
+            title   = 'SCREENING FAILED';
+            verdict = 'The internal monologue was audible throughout. You have been cleared — removed from the process.';
+            note    = '(But you were real.)';
+            colour  = 'text-[#F5F0E6]';
+        } else if (official >= 3) {
+            title   = 'LARGELY COMPLIANT';
+            verdict = 'The screen held for most of the session. Minor anomalies detected. Will not be escalated at this time.';
+            note    = '(The file notes: "Competent dissembler.")';
+            colour  = 'text-[#C9A04C]';
+        } else {
+            title   = 'INCONCLUSIVE';
+            verdict = 'You exist in the threshold. Partially legible. The surveillance system cannot classify you. This is logged as a failure.';
+            note    = '(Filed under: suspicious. You\'re welcome.)';
+            colour  = 'text-[#C9A04C]/70';
+        }
+
+        const transcript = screenState.answers.map((a, i) => {
+            const cls = a === 'official' ? 'text-[#C9A04C]/65' : 'text-[#F5F0E6]/45';
+            const label = a === 'official' ? 'official' : 'real';
+            const text = a === 'official' ? screenQs[i].official : screenQs[i].real;
+            return `<div class="flex gap-3 text-sm ${cls}">
+                <span class="text-xs uppercase tracking-widest w-6 shrink-0">${i+1}.</span>
+                <span><em class="text-[10px] uppercase tracking-widest opacity-50">[${label}]</em> ${text}</span>
+            </div>`;
+        }).join('');
+
+        document.getElementById('screen-content').innerHTML = `
+            <div class="fade-in">
+                <div class="text-[#C9A04C]/40 text-xs tracking-widest uppercase mb-4">Result</div>
+                <h3 class="header-font text-4xl ${colour} mb-5">${title}</h3>
+                <p class="text-lg text-[#F5F0E6]/70 leading-relaxed mb-2">${verdict}</p>
+                <p class="text-sm italic text-[#F5F0E6]/35 mb-10">${note}</p>
+                <div class="border border-[#C9A04C]/20 p-6 mb-8">
+                    <div class="text-xs uppercase tracking-widest text-[#C9A04C]/40 mb-5">Transcript</div>
+                    <div class="space-y-4">${transcript}</div>
+                </div>
+                <div class="flex gap-4">
+                    <button onclick="openScreenTest()"
+                        class="px-8 py-3 border border-[#C9A04C]/50 hover:border-[#C9A04C] hover:bg-[#C9A04C]/10 transition-all text-sm uppercase tracking-widest text-[#C9A04C]">
+                        Retake
+                    </button>
+                    <button onclick="closeModal('screen-modal')"
+                        class="px-8 py-3 border border-[#F5F0E6]/15 hover:border-[#F5F0E6]/40 transition-all text-sm uppercase tracking-widest text-[#F5F0E6]/50">
+                        Exit
+                    </button>
+                </div>
+            </div>`;
+    }
+    </script>
+</body>
+</html>
