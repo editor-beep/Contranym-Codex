@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESIGN &mdash; The Flip &bull; Contranym Codex</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #2C2C2C;
+            color: #F5F0E6;
+            background-image: linear-gradient(rgba(60,11,36,0.85), rgba(60,11,36,0.85)), url('https://picsum.photos/id/1015/2000/1200');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px);
+            animation: filmgrain 0.8s steps(5) infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        @keyframes filmgrain { 0% { background-position: 0 0; } 100% { background-position: 100px 100px; } }
+        .header-font { font-family: 'Playfair Display', serif; letter-spacing: 0.15em; }
+        .flip-title {
+            font-size: clamp(3.5rem, 10vw, 6.5rem);
+            line-height: 0.85;
+            animation: lynchJitter 4s infinite alternate;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.08em;
+        }
+        @keyframes lynchJitter {
+            0% { transform: translate(0,0) rotate(-0.4deg); }
+            100% { transform: translate(5px, -2px) rotate(0.4deg); }
+        }
+    </style>
+</head>
+<body class="min-h-screen relative">
+
+    <nav class="bg-[#3C0B24] py-6 border-b-4 border-[#C9A04C] sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-8 flex justify-between items-center">
+            <a href="index.html" class="header-font text-3xl text-[#C9A04C]">CONTRANYM CODEX</a>
+            <a href="the-flip.html" class="text-[#C9A04C]/70 hover:text-[#C9A04C] transition-colors text-sm tracking-widest uppercase">&larr; The Flip</a>
+        </div>
+    </nav>
+
+    <div class="max-w-5xl mx-auto px-8 py-16 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+
+            <div class="lg:col-span-3">
+                <div class="text-[#C9A04C] text-xs tracking-[0.22em] uppercase mb-4">The Flip &bull; Field Notes &bull; 25 / 25</div>
+                <h1 class="flip-title text-[#C9A04C] select-none">RESIGN</h1>
+                <div class="text-[#F5F0E6]/40 text-sm tracking-widest uppercase mt-3 mb-10">verb</div>
+
+                <div class="grid grid-cols-2 gap-px bg-[#C9A04C]/20 border border-[#C9A04C]/20 mb-12">
+                    <div class="bg-black/50 p-6">
+                        <div class="text-[#C9A04C] text-xs uppercase tracking-widest mb-3">I.</div>
+                        <p class="text-base leading-snug text-[#F5F0E6]/90">To quit; to leave a position</p>
+                    </div>
+                    <div class="bg-black/50 p-6">
+                        <div class="text-[#C9A04C] text-xs uppercase tracking-widest mb-3">II.</div>
+                        <p class="text-base leading-snug text-[#F5F0E6]/90">To accept; to submit without resistance</p>
+                    </div>
+                </div>
+
+                <div class="space-y-5 text-lg leading-relaxed">
+                    <p>&ldquo;She resigned her position&rdquo; versus &ldquo;She resigned herself to her fate.&rdquo;</p>
+                    <p>One is an act of agency &mdash; the decision to leave, to refuse, to withdraw cooperation from a structure that no longer deserves it. The other is the quieting of agency &mdash; the acceptance that resistance is futile and adaptation is all that remains.</p>
+                    <p>The word punishes resistance and praises surrender in the same breath. To resign a position is bold, sometimes noble, often the only honest option. To resign yourself is to be broken in the most respectable way possible. Your resignation is not defeat; it is &ldquo;maturity.&rdquo; It is &ldquo;perspective.&rdquo; It is learning to live with what you cannot change.</p>
+                    <p>The Latin <em>resignare</em> meant to unseal, to cancel, to give back a sign. The word has always been about returning something &mdash; a title, a claim, a self. The question the word never asks is whether the return was voluntary. Whether the hands that handed back the sign were free.</p>
+                    <p>The codex ends here. With a word that contains, in its two small syllables, the entire argument: the choice to leave, and the choice that is no longer a choice.</p>
+                </div>
+
+                <div class="flex flex-wrap gap-2 mt-10 items-center">
+                    <span class="text-xs uppercase tracking-widest text-[#C9A04C]/40 mr-1">Tags</span>
+                    <span class="text-xs text-[#C9A04C]/60 border border-[#C9A04C]/25 px-2 py-1 tracking-wider">submission</span>
+                    <span class="text-xs text-[#C9A04C]/60 border border-[#C9A04C]/25 px-2 py-1 tracking-wider">power</span>
+                    <span class="text-xs text-[#C9A04C]/60 border border-[#C9A04C]/25 px-2 py-1 tracking-wider">double standard</span>
+                    <span class="text-xs text-[#C9A04C]/60 border border-[#C9A04C]/25 px-2 py-1 tracking-wider">agency</span>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 lg:border-l border-[#C9A04C]/30 lg:pl-12">
+                <div class="sticky top-24 space-y-10">
+
+                    <div class="border border-[#C9A04C]/40 p-6 bg-black/30">
+                        <div class="text-[#C9A04C] text-xs uppercase tracking-widest mb-4">Field Note</div>
+                        <p class="italic text-sm leading-relaxed text-[#F5F0E6]/75">&ldquo;Punishes resistance and praises surrender in the same breath.&rdquo;</p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="text-[#C9A04C] text-xs uppercase tracking-widest mb-4">The Flip Series</div>
+                        <a href="oversight.html" class="block text-[#C9A04C]/60 hover:text-[#C9A04C] transition-colors text-sm">&larr; Oversight</a>
+                        <a href="temper.html" class="block text-[#C9A04C]/60 hover:text-[#C9A04C] transition-colors text-sm">Back to Temper &rarr;</a>
+                    </div>
+
+                    <div class="pt-4 border-t border-[#C9A04C]/20">
+                        <a href="index.html" class="text-[#C9A04C]/50 hover:text-[#C9A04C] transition-colors text-xs uppercase tracking-widest">All Entries</a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center text-[#C9A04C] my-16 text-2xl tracking-widest">&diams;</div>
+
+        <nav class="flex justify-between items-center pt-8 border-t border-[#C9A04C]/20 text-xs uppercase tracking-widest">
+            <a href="oversight.html" class="text-[#C9A04C]/60 hover:text-[#C9A04C] transition-colors">&larr; Oversight</a>
+            <a href="index.html" class="text-[#C9A04C]/60 hover:text-[#C9A04C] transition-colors">All Entries &rarr;</a>
+        </nav>
+
+    </div>
+</body>
+</html>
