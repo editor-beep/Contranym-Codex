@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLEAVE &mdash; Codex &bull; Contranym Codex</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #2C2C2C;
+            color: #F5F0E6;
+            background-image: linear-gradient(rgba(60,11,36,0.85), rgba(60,11,36,0.85)), url('https://picsum.photos/id/1015/2000/1200');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px);
+            animation: filmgrain 0.8s steps(5) infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        @keyframes filmgrain { 0% { background-position: 0 0; } 100% { background-position: 100px 100px; } }
+        .header-font { font-family: 'Playfair Display', serif; letter-spacing: 0.15em; }
+        .flip-title {
+            font-size: clamp(3.5rem, 10vw, 6.5rem);
+            line-height: 0.85;
+            animation: lynchJitter 4s infinite alternate;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.08em;
+        }
+        @keyframes lynchJitter {
+            0% { transform: translate(0,0) rotate(-0.4deg); }
+            100% { transform: translate(5px, -2px) rotate(0.4deg); }
+        }
+    </style>
+</head>
+<body class="min-h-screen relative">
+
+    <nav class="bg-[#3C0B24] py-6 border-b-4 border-[#C9A04C] sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-8 flex justify-between items-center">
+            <a href="index.html" class="header-font text-3xl text-[#C9A04C]">CONTRANYM CODEX</a>
+            <a href="index.html#codex" class="text-[#C9A04C]/70 hover:text-[#C9A04C] transition-colors text-sm tracking-widest uppercase">&larr; The Codex</a>
+        </div>
+    </nav>
+
+    <div class="max-w-5xl mx-auto px-8 py-16 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+
+            <div class="lg:col-span-3">
+                <div class="text-[#C9A04C] text-xs tracking-[0.22em] uppercase mb-4">Codex &bull; Specimen</div>
+                <h1 class="flip-title text-[#C9A04C] select-none">CLEAVE</h1>
+                <div class="text-[#F5F0E6]/40 text-sm tracking-widest uppercase mt-3 mb-10">verb (irregular)</div>
+
+                <div class="grid grid-cols-2 gap-px bg-[#C9A04C]/20 border border-[#C9A04C]/20 mb-12">
+                    <div class="bg-black/50 p-6">
+                        <div class="text-[#C9A04C] text-xs uppercase tracking-widest mb-3">I.</div>
+                        <p class="text-base leading-snug text-[#F5F0E6]/90">To split or sever with force</p>
+                    </div>
+                    <div class="bg-black/50 p-6">
+                        <div class="text-[#C9A04C] text-xs uppercase tracking-widest mb-3">II.</div>
+                        <p class="text-base leading-snug text-[#F5F0E6]/90">To cling or adhere closely</p>
+                    </div>
+                </div>
+
+                <div class="space-y-5 text-lg leading-relaxed">
+                    <p>This is the purest etymological contranym in the English language &mdash; not a meaning that drifted over centuries, but two completely unrelated words that fused at the surface and now cannot be told apart.</p>
+                    <p>To <em>cleave</em> (to split) descends from Old English <em>cleofan</em>, from Proto-Germanic <em>kleuban</em>: the axe word, the surgical word, the word for what happens when force meets resistance and something gives. To <em>cleave</em> (to cling) descends from Old English <em>clifian</em>, from Proto-Germanic <em>klibanan</em>: the word for what ivy does to stone, what grief does to the chest, what we do to people we cannot let go of.</p>
+                    <p>They are strangers who became roommates by phonological accident across the Middle English period. They were never related. They do not share a root. And yet they are now, irreversibly, the same word.</p>
+                    <p>The word that means separation and the word that means attachment are identical twins with different parents. You cannot distinguish them by sound, by spelling, by shape in the mouth. Context does the work &mdash; and occasionally, as in marriage vows and valedictions and the particular kind of grief that holds on while letting go, context declines to choose.</p>
+                    <p>The homepage of this site chose CLEAVE as its word deliberately. It performs the contradiction it describes. It is not a metaphor for the problem. It is the problem, dressed in five letters and wearing two faces simultaneously.</p>
+                </div>
+
+                <div class="flex flex-wrap gap-2 mt-10 items-center">
+                    <span class="text-xs uppercase tracking-widest text-[#C9A04C]/40 mr-1">Tags</span>
+                    <span class="text-xs text-[#C9A04C]/60 border border-[#C9A04C]/25 px-2 py-1 tracking-wider">etymology</span>
+                    <span class="text-xs text-[#C9A04C]/60 border border-[#C9A04C]/25 px-2 py-1 tracking-wider">separation</span>
+                    <span class="text-xs text-[#C9A04C]/60 border border-[#C9A04C]/25 px-2 py-1 tracking-wider">attachment</span>
+                    <span class="text-xs text-[#C9A04C]/60 border border-[#C9A04C]/25 px-2 py-1 tracking-wider">bodily metaphor</span>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 lg:border-l border-[#C9A04C]/30 lg:pl-12">
+                <div class="sticky top-24 space-y-10">
+
+                    <div class="border border-[#C9A04C]/40 p-6 bg-black/30">
+                        <div class="text-[#C9A04C] text-xs uppercase tracking-widest mb-4">Field Note</div>
+                        <p class="italic text-sm leading-relaxed text-[#F5F0E6]/75">&ldquo;Two entirely different words. One body. The dictionary&rsquo;s most intimate haunting.&rdquo;</p>
+                    </div>
+
+                    <div class="border border-[#C9A04C]/20 p-6 bg-black/20">
+                        <div class="text-[#C9A04C] text-xs uppercase tracking-widest mb-4">Etymology</div>
+                        <p class="italic text-sm leading-relaxed text-[#F5F0E6]/60">
+                            Split: OE <em>cleofan</em>, Proto-Gmc <em>kleuban</em>.<br>
+                            Cling: OE <em>clifian</em>, Proto-Gmc <em>klibanan</em>.<br><br>
+                            Two unrelated roots. One word. The merger is phonological accident, not semantic drift. The only true double contranym by ancestry in common English.
+                        </p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="text-[#C9A04C] text-xs uppercase tracking-widest mb-4">Codex</div>
+                        <a href="bound.html" class="block text-[#C9A04C]/60 hover:text-[#C9A04C] transition-colors text-sm">&larr; Bound</a>
+                        <a href="sanction.html" class="block text-[#C9A04C]/60 hover:text-[#C9A04C] transition-colors text-sm">Sanction &rarr;</a>
+                    </div>
+
+                    <div class="pt-4 border-t border-[#C9A04C]/20">
+                        <a href="index.html" class="text-[#C9A04C]/50 hover:text-[#C9A04C] transition-colors text-xs uppercase tracking-widest">All Entries</a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center text-[#C9A04C] my-16 text-2xl tracking-widest">&diams;</div>
+
+        <nav class="flex justify-between items-center pt-8 border-t border-[#C9A04C]/20 text-xs uppercase tracking-widest">
+            <a href="bound.html" class="text-[#C9A04C]/60 hover:text-[#C9A04C] transition-colors">&larr; Bound</a>
+            <a href="sanction.html" class="text-[#C9A04C]/60 hover:text-[#C9A04C] transition-colors">Sanction &rarr;</a>
+        </nav>
+
+    </div>
+</body>
+</html>
