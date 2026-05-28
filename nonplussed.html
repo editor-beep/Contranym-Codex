@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NONPLUSSED &mdash; The Flip &bull; Contranym Codex</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #2C2C2C;
+            color: #F5F0E6;
+            background-image: linear-gradient(rgba(60,11,36,0.85), rgba(60,11,36,0.85)), url('https://picsum.photos/id/1015/2000/1200');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px);
+            animation: filmgrain 0.8s steps(5) infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        @keyframes filmgrain { 0% { background-position: 0 0; } 100% { background-position: 100px 100px; } }
+        .header-font { font-family: 'Playfair Display', serif; letter-spacing: 0.15em; }
+        .flip-title {
+            font-size: clamp(3.5rem, 10vw, 6.5rem);
+            line-height: 0.85;
+            animation: lynchJitter 4s infinite alternate;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.08em;
+        }
+        @keyframes lynchJitter {
+            0% { transform: translate(0,0) rotate(-0.4deg); }
+            100% { transform: translate(5px, -2px) rotate(0.4deg); }
+        }
+    </style>
+</head>
+<body class="min-h-screen relative">
+
+    <nav class="bg-[#3C0B24] py-6 border-b-4 border-[#C9A04C] sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-8 flex justify-between items-center">
+            <a href="index.html" class="header-font text-3xl text-[#C9A04C]">CONTRANYM CODEX</a>
+            <a href="the-flip.html" class="text-[#C9A04C]/70 hover:text-[#C9A04C] transition-colors text-sm tracking-widest uppercase">&larr; The Flip</a>
+        </div>
+    </nav>
+
+    <div class="max-w-5xl mx-auto px-8 py-16 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+
+            <div class="lg:col-span-3">
+                <div class="text-[#C9A04C] text-xs tracking-[0.22em] uppercase mb-4">The Flip &bull; Field Notes &bull; 31 / 31</div>
+                <h1 class="flip-title text-[#C9A04C] select-none">NONPLUSSED</h1>
+                <div class="text-[#F5F0E6]/40 text-sm tracking-widest uppercase mt-3 mb-10">adjective</div>
+
+                <div class="grid grid-cols-2 gap-px bg-[#C9A04C]/20 border border-[#C9A04C]/20 mb-12">
+                    <div class="bg-black/50 p-6">
+                        <div class="text-[#C9A04C] text-xs uppercase tracking-widest mb-3">I.</div>
+                        <p class="text-base leading-snug text-[#F5F0E6]/90">Surprised and confused; at a loss for words or action</p>
+                    </div>
+                    <div class="bg-black/50 p-6">
+                        <div class="text-[#C9A04C] text-xs uppercase tracking-widest mb-3">II.</div>
+                        <p class="text-base leading-snug text-[#F5F0E6]/90">Unfazed; calm; not bothered in the least (American informal)</p>
+                    </div>
+                </div>
+
+                <div class="space-y-5 text-lg leading-relaxed">
+                    <p>Latin <em>non plus</em> &mdash; no more, no further. The original sense was of arriving at a point where there is nothing more to say: I am at a loss, I cannot proceed, my resources of response have been exhausted. The word named the bewildered, the speechless, the genuinely at sea.</p>
+                    <p>At some point in American informal usage, the prefix <em>non-</em> began to be read as negation rather than intensifier &mdash; as meaning &ldquo;not plussed,&rdquo; where &ldquo;plussed&rdquo; was back-formed to mean &ldquo;bothered&rdquo; or &ldquo;fazed.&rdquo; And so nonplussed began to mean its opposite: unperturbed, cool, unmoved by whatever just happened.</p>
+                    <p>This is the most recently formed contranym in the Codex &mdash; not a drift across centuries but a split within living memory. Two cohorts of educated speakers now use the same word to mean opposite things, each confident the other is wrong, and each correct within their own register.</p>
+                    <p>The traditional reader sees &ldquo;she was nonplussed by the announcement&rdquo; and understands: she was at a loss, confused, taken aback. The American informal reader sees the same sentence and understands: she was unmoved, cool, entirely unfazed. The same sentence has two opposite meanings depending solely on which side of the split you were educated on.</p>
+                    <p>Other contranyms in this Codex drifted across centuries, driven by institutional language, labor divisions, or phonological accident. NONPLUSSED did it in a generation, driven by misreading. It is the Codex&rsquo;s most recent contranym and arguably its purest case of language making itself up as it goes.</p>
+                </div>
+
+                <div class="flex flex-wrap gap-2 mt-10 items-center">
+                    <span class="text-xs uppercase tracking-widest text-[#C9A04C]/40 mr-1">Tags</span>
+                    <span class="text-xs text-[#C9A04C]/60 border border-[#C9A04C]/25 px-2 py-1 tracking-wider">semantic drift</span>
+                    <span class="text-xs text-[#C9A04C]/60 border border-[#C9A04C]/25 px-2 py-1 tracking-wider">registers</span>
+                    <span class="text-xs text-[#C9A04C]/60 border border-[#C9A04C]/25 px-2 py-1 tracking-wider">language change</span>
+                    <span class="text-xs text-[#C9A04C]/60 border border-[#C9A04C]/25 px-2 py-1 tracking-wider">gaslighting</span>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 lg:border-l border-[#C9A04C]/30 lg:pl-12">
+                <div class="sticky top-24 space-y-10">
+
+                    <div class="border border-[#C9A04C]/40 p-6 bg-black/30">
+                        <div class="text-[#C9A04C] text-xs uppercase tracking-widest mb-4">Field Note</div>
+                        <p class="italic text-sm leading-relaxed text-[#F5F0E6]/75">&ldquo;Two groups of educated speakers using the same word to mean opposite things, each certain the other is wrong. Both are right. This is the Codex in miniature.&rdquo;</p>
+                    </div>
+
+                    <div class="border border-[#C9A04C]/20 p-6 bg-black/20">
+                        <div class="text-[#C9A04C] text-xs uppercase tracking-widest mb-4">Etymology</div>
+                        <p class="italic text-sm leading-relaxed text-[#F5F0E6]/60">
+                            Latin <em>non plus</em> (&ldquo;no more, no further&rdquo;).<br><br>
+                            The American informal inversion arose from misreading <em>non-</em> as a negation of a back-formed <em>plussed</em> (&ldquo;bothered&rdquo;). The split is generational, not historical. The Codex&rsquo;s most recent contranym.
+                        </p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="text-[#C9A04C] text-xs uppercase tracking-widest mb-4">The Flip Series</div>
+                        <a href="awful.html" class="block text-[#C9A04C]/60 hover:text-[#C9A04C] transition-colors text-sm">&larr; Awful</a>
+                        <a href="temper.html" class="block text-[#C9A04C]/60 hover:text-[#C9A04C] transition-colors text-sm">Back to Temper &rarr;</a>
+                    </div>
+
+                    <div class="pt-4 border-t border-[#C9A04C]/20">
+                        <a href="index.html" class="text-[#C9A04C]/50 hover:text-[#C9A04C] transition-colors text-xs uppercase tracking-widest">All Entries</a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center text-[#C9A04C] my-16 text-2xl tracking-widest">&diams;</div>
+
+        <nav class="flex justify-between items-center pt-8 border-t border-[#C9A04C]/20 text-xs uppercase tracking-widest">
+            <a href="awful.html" class="text-[#C9A04C]/60 hover:text-[#C9A04C] transition-colors">&larr; Awful</a>
+            <a href="temper.html" class="text-[#C9A04C]/60 hover:text-[#C9A04C] transition-colors">Back to Temper &rarr;</a>
+        </nav>
+
+    </div>
+</body>
+</html>

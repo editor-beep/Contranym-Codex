@@ -117,13 +117,23 @@
                 </button>
             </div>
 
-            <div class="game-card bg-[#3C0B24] p-10 border-2 border-[#C9A04C] md:col-span-2 md:max-w-lg md:mx-auto">
+            <div class="game-card bg-[#3C0B24] p-10 border-2 border-[#C9A04C]">
                 <div class="text-[#C9A04C]/50 text-xs tracking-[0.2em] uppercase mb-3">Game III</div>
                 <h2 class="header-font text-4xl mb-4 text-[#C9A04C]">SCREEN TEST</h2>
                 <p class="mb-6 text-[#F5F0E6]/80 leading-relaxed">A routine wellness check. Five questions. Give the right answers. Your internal monologue is your own concern and will not be recorded. Probably.</p>
                 <button onclick="openScreenTest()"
                         class="px-8 py-4 border-2 border-[#C9A04C] hover:bg-[#C9A04C] hover:text-[#3C0B24] transition-all tracking-widest uppercase text-sm">
                     BEGIN SCREENING →
+                </button>
+            </div>
+
+            <div class="game-card bg-[#3C0B24] p-10 border-2 border-[#C9A04C]">
+                <div class="text-[#C9A04C]/50 text-xs tracking-[0.2em] uppercase mb-3">Game IV</div>
+                <h2 class="header-font text-4xl mb-4 text-[#C9A04C]">THE REDACTION</h2>
+                <p class="mb-6 text-[#F5F0E6]/80 leading-relaxed">Six official documents. One word in each has been redacted. Reveal the word. Then determine what the document means. Spoiler: the document supports both readings equally.</p>
+                <button onclick="openRedaction()"
+                        class="px-8 py-4 border-2 border-[#C9A04C] hover:bg-[#C9A04C] hover:text-[#3C0B24] transition-all tracking-widest uppercase text-sm">
+                    READ THE RECORD →
                 </button>
             </div>
 
@@ -175,6 +185,22 @@
                         class="text-[#C9A04C]/50 hover:text-[#C9A04C] transition-colors text-xl px-3 py-2">✕</button>
             </div>
             <div id="screen-content"></div>
+        </div>
+    </div>
+
+
+    <!-- ============================= MODAL: THE REDACTION ============================= -->
+    <div id="redaction-modal" class="modal">
+        <div class="max-w-2xl mx-auto px-8 py-12">
+            <div class="flex justify-between items-center mb-12">
+                <div>
+                    <div class="text-[#C9A04C]/50 text-xs tracking-[0.2em] uppercase mb-1">Game IV</div>
+                    <h2 class="header-font text-3xl text-[#C9A04C]">THE REDACTION</h2>
+                </div>
+                <button onclick="closeModal('redaction-modal')"
+                        class="text-[#C9A04C]/50 hover:text-[#C9A04C] transition-colors text-xl px-3 py-2">✕</button>
+            </div>
+            <div id="redaction-content"></div>
         </div>
     </div>
 
@@ -728,9 +754,174 @@ Behind you, the sign flickers once more. <span class="word-highlight">LEFT</span
                 </div>
             </div>`;
     }
+    // ══════════════════════════════════════════════════════════════════════════
+    // GAME 4 — THE REDACTION
+    // ══════════════════════════════════════════════════════════════════════════
+
+    const redactionDocs = [
+        {
+            label: 'Internal Memorandum — Ref. 2024/HR/0047',
+            textBefore: 'Following the review process, the committee has',
+            word: 'SANCTIONED',
+            textAfter: 'the senior executive\'s conduct. No further escalation is anticipated at this stage.',
+            readingA: { label: 'The conduct was approved', commentary: 'The committee endorsed the executive\'s actions. The review concluded positively. The matter is closed in the executive\'s favour.' },
+            readingB: { label: 'The conduct was penalised', commentary: 'The committee imposed a formal sanction. The review concluded negatively. The matter is closed against the executive.' },
+            reveal: 'SANCTIONED performs both readings simultaneously. "No further escalation" is grammatically compatible with either outcome: there is nothing more to escalate because it was approved, or because it has already been penalised. The sentence is complete. It is uninformative.'
+        },
+        {
+            label: 'Annual Report — Governance Section, p. 14',
+            textBefore: 'The incident on 14 March was subsequently attributed to an',
+            word: 'OVERSIGHT',
+            textAfter: 'in the standard review process. Corrective measures have been implemented.',
+            readingA: { label: 'Someone failed to notice something', commentary: 'An oversight: an error of inattention. Someone responsible for monitoring did not monitor. The report has named the failure.' },
+            readingB: { label: 'The review process itself was the oversight mechanism', commentary: 'Oversight: the function of supervision. The standard oversight process experienced an incident. The report has named the mechanism, not a failure of it.' },
+            reveal: 'OVERSIGHT allows the organisation to produce a report that simultaneously names and obscures the failure. The oversight failed, or the oversight caught it. Both sentences read identically. The corrective measures make further inquiry unnecessary.'
+        },
+        {
+            label: 'Formal Communication — Office of the Registrar',
+            textBefore: 'The review panel found the candidate\'s response to be',
+            word: 'APPROPRIATE',
+            textAfter: 'given the circumstances outlined in the original submission.',
+            readingA: { label: 'The response met the required standard', commentary: 'Appropriate: suitable, correct, fitting. The candidate passed. The response was what was expected and required.' },
+            readingB: { label: 'The response has been taken for institutional use', commentary: 'The panel found the response appropriate — that is, applicable to their purposes. What the candidate submitted has been incorporated into the institutional record, on the institution\'s terms.' },
+            reveal: 'The adjective and the verb share one root and one spelling. "The panel found your response appropriate" tells the candidate nothing about what has been done with their response, only that it was judged suitable for whatever the panel intended to do with it.'
+        },
+        {
+            label: 'Project Brief — Distributed to All Teams',
+            textBefore: 'All teams are instructed to',
+            word: 'EXECUTE',
+            textAfter: 'the revised operational framework by the end of the quarter. Compliance will be monitored.',
+            readingA: { label: 'Teams must carry out the framework', commentary: 'Execute: to perform, to implement, to complete. This is project management language. The brief asks for action.' },
+            readingB: { label: 'Teams must terminate what existed before the framework', commentary: 'Execute: to end, to put to death. The old process must be executed — stopped, concluded, eliminated — to make way for the revised one.' },
+            reveal: 'Both readings are simultaneously required. The new framework must be executed (carried out) while the old one is executed (ended). The memo uses one word for both operations. The compliance monitoring will evaluate whether you understood which was meant, and when.'
+        },
+        {
+            label: 'Court Order — Case No. 2024-CV-1182',
+            textBefore: 'The court hereby',
+            word: 'ENJOINS',
+            textAfter: 'the respondent from any further engagement with the subject matter of these proceedings pending final determination.',
+            readingA: { label: 'The court is ordering the respondent to act', commentary: 'Enjoin: to command, to direct, to instruct with authority. The court is issuing a directive.' },
+            readingB: { label: 'The court is prohibiting the respondent from acting', commentary: 'Enjoin: to legally restrain, to issue an injunction against. The court is forbidding engagement.' },
+            reveal: 'In legal practice, the prohibitory sense now dominates — but the instructive sense remains available. The respondent who acts is in violation; the respondent who fails to act may also be in violation, depending on what the court later clarifies it meant. The order stands. The interpretation is pending.'
+        },
+        {
+            label: 'Letter of Reference — Submitted Confidentially',
+            textBefore: 'I am pleased to confirm that the candidate is fully',
+            word: 'QUALIFIED',
+            textAfter: 'for the position described, and I offer my support for this application.',
+            readingA: { label: 'The candidate meets all requirements', commentary: 'Qualified: competent, credentialed, meeting the necessary standard. This is a positive reference. The word is functioning as an endorsement of capability.' },
+            readingB: { label: 'The support offered is limited or conditional', commentary: '"I offer my support" — but if "qualified" carries its conditional sense, the offer is itself qualified. The support comes with reservations not stated in the letter. The referee has written a document that cannot be held to a claim.' },
+            reveal: 'A letter of reference that describes the candidate as "qualified" without specifying which sense leaves the hiring committee to infer. The referee retains deniability. The candidate cannot appeal the word\'s ambiguity, because the word\'s ambiguity is the document.'
+        }
+    ];
+
+    let redactionState = { doc: 0, revealed: false };
+
+    function openRedaction() {
+        redactionState = { doc: 0, revealed: false };
+        openModal('redaction-modal');
+        renderRedaction();
+    }
+
+    function renderRedaction() {
+        const d = redactionDocs[redactionState.doc];
+        const total = redactionDocs.length;
+        const dots = redactionDocs.map((_, i) => {
+            const cls = i < redactionState.doc ? 'bg-[#C9A04C]' : i === redactionState.doc ? 'bg-[#C9A04C]/60 ring-1 ring-[#C9A04C]' : 'bg-[#C9A04C]/20';
+            return `<span class="inline-block w-2 h-2 rounded-full ${cls}"></span>`;
+        }).join('');
+
+        const docHtml = redactionState.revealed
+            ? `${d.textBefore} <span class="word-highlight font-bold">${d.word}</span> ${d.textAfter}`
+            : `${d.textBefore} <span id="redact-block" onclick="revealWord()" class="inline-block bg-[#C9A04C]/90 text-transparent cursor-pointer select-none px-1 rounded-sm align-middle" style="min-width:7em" title="Click to reveal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> ${d.textAfter}`;
+
+        const interpretHtml = redactionState.revealed ? `
+            <div class="fade-in mt-8">
+                <p class="text-[#C9A04C]/70 text-sm uppercase tracking-widest mb-5">What does this document mean?</p>
+                <div class="space-y-3">
+                    <button onclick="interpretDoc('A')"
+                        class="room-choice w-full text-left px-6 py-4 text-base leading-snug">
+                        ${d.readingA.label}
+                    </button>
+                    <button onclick="interpretDoc('B')"
+                        class="room-choice w-full text-left px-6 py-4 text-base leading-snug">
+                        ${d.readingB.label}
+                    </button>
+                </div>
+            </div>` : `<p class="text-[#F5F0E6]/30 text-sm mt-8 italic">Click the redaction to reveal the word.</p>`;
+
+        document.getElementById('redaction-content').innerHTML = `
+            <div class="fade-in">
+                <div class="flex items-center gap-3 mb-8">
+                    <span class="text-[#C9A04C]/50 text-xs uppercase tracking-widest">Document ${redactionState.doc + 1} of ${total}</span>
+                    <div class="flex gap-2">${dots}</div>
+                </div>
+                <div class="border border-[#C9A04C]/20 bg-black/40 p-6 mb-2">
+                    <div class="text-[#C9A04C]/40 text-[10px] uppercase tracking-widest mb-4">${d.label}</div>
+                    <p class="text-lg leading-relaxed italic">${docHtml}</p>
+                </div>
+                <div id="interpret-section">${interpretHtml}</div>
+            </div>`;
+    }
+
+    function revealWord() {
+        redactionState.revealed = true;
+        renderRedaction();
+    }
+
+    function interpretDoc(choice) {
+        const d = redactionDocs[redactionState.doc];
+        const chosen = choice === 'A' ? d.readingA : d.readingB;
+        const other = choice === 'A' ? d.readingB : d.readingA;
+        const isLast = redactionState.doc >= redactionDocs.length - 1;
+
+        document.getElementById('interpret-section').innerHTML = `
+            <div class="fade-in mt-8">
+                <div class="border-l-4 border-[#C9A04C] pl-6 mb-6">
+                    <p class="text-[#C9A04C]/80 italic mb-3">${chosen.commentary}</p>
+                    <p class="text-[#F5F0E6]/40 text-sm italic">Also valid: "${other.label}" — ${other.commentary}</p>
+                </div>
+                <p class="text-[#F5F0E6]/55 text-sm leading-relaxed mb-6 border border-[#C9A04C]/15 p-4">${d.reveal}</p>
+                <button onclick="${isLast ? 'renderRedactionEnd()' : 'nextDoc()'}"
+                    class="px-8 py-3 border border-[#C9A04C]/50 hover:border-[#C9A04C] hover:bg-[#C9A04C]/10 transition-all text-sm uppercase tracking-widest text-[#C9A04C]">
+                    ${isLast ? 'Close the Record →' : 'Next Document →'}
+                </button>
+            </div>`;
+    }
+
+    function nextDoc() {
+        redactionState.doc++;
+        redactionState.revealed = false;
+        renderRedaction();
+    }
+
+    function renderRedactionEnd() {
+        document.getElementById('redaction-content').innerHTML = `
+            <div class="fade-in text-center">
+                <div class="text-[#C9A04C]/40 text-xs tracking-widest uppercase mb-6">Record Reviewed</div>
+                <h3 class="header-font text-4xl text-[#C9A04C] mb-8">THE RECORD IS CLOSED</h3>
+                <p class="text-lg text-[#F5F0E6]/65 leading-relaxed max-w-md mx-auto mb-6 italic">
+                    Six documents. Six words. Every sentence was complete. None of them told you what happened.
+                </p>
+                <p class="text-sm text-[#F5F0E6]/40 max-w-md mx-auto mb-10 leading-relaxed">
+                    This is not a failure of language. It is language performing its institutional function with precision. The ambiguity was the message.
+                </p>
+                <div class="flex gap-4 justify-center">
+                    <button onclick="openRedaction()"
+                        class="px-8 py-3 border border-[#C9A04C]/50 hover:border-[#C9A04C] hover:bg-[#C9A04C]/10 transition-all text-sm uppercase tracking-widest text-[#C9A04C]">
+                        Review Again
+                    </button>
+                    <button onclick="closeModal('redaction-modal')"
+                        class="px-8 py-3 border border-[#F5F0E6]/15 hover:border-[#F5F0E6]/40 transition-all text-sm uppercase tracking-widest text-[#F5F0E6]/50">
+                        Exit
+                    </button>
+                </div>
+            </div>`;
+    }
+
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape') {
-            ['flip-modal', 'escape-modal', 'screen-modal'].forEach(closeModal);
+            ['flip-modal', 'escape-modal', 'screen-modal', 'redaction-modal'].forEach(closeModal);
         }
     });
     </script>
