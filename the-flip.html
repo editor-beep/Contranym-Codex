@@ -6,55 +6,31 @@
     <title>THE FLIP &bull; Why &ldquo;Bound&rdquo; Broke My Brain &mdash; Contranym Codex</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'EB Garamond', serif;
-            background: #2C2C2C;
-            color: #F5F0E6;
-            background-image: linear-gradient(rgba(60,11,36,0.85), rgba(60,11,36,0.85)), url('https://picsum.photos/id/1015/2000/1200');
-            background-size: cover;
-            background-attachment: fixed;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px);
-            animation: filmgrain 0.8s steps(5) infinite;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        @keyframes filmgrain { 0% { background-position: 0 0; } 100% { background-position: 100px 100px; } }
-
-        .header-font { font-family: 'Playfair Display', serif; letter-spacing: 0.15em; }
-
-        .pull-word {
-            font-size: clamp(3rem, 10vw, 6rem);
-            color: rgba(201, 160, 76, 0.15);
-            letter-spacing: 0.1em;
-            line-height: 1;
-            display: block;
-            text-align: center;
-            pointer-events: none;
-            user-select: none;
-            font-style: normal;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="min-h-screen relative">
-    <nav class="bg-[#3C0B24] py-6 border-b-4 border-[#C9A04C] sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-8 flex justify-between items-center">
-            <a href="index.html" class="header-font text-3xl text-[#C9A04C]">CONTRANYM CODEX</a>
-            <div class="flex gap-6">
-                <a href="games.html" class="text-[#C9A04C]/70 hover:text-[#C9A04C] transition-colors text-sm tracking-widest uppercase">Games</a>
-                <a href="temper.html" class="text-[#C9A04C]/70 hover:text-[#C9A04C] transition-colors text-sm tracking-widest uppercase">Field Notes &rarr;</a>
-            </div>
-        </div>
-    </nav>
 
-    <article class="max-w-4xl mx-auto px-8 py-20 relative z-10">
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<nav class="site-nav" aria-label="Main navigation">
+    <div class="site-nav__inner">
+        <a href="index.html" class="site-nav__logo">CONTRANYM CODEX</a>
+        <div class="site-nav__links">
+            <a href="index.html#codex">Codex</a>
+            <a href="the-flip.html" aria-current="page">The Flip</a>
+            <a href="essays.html">Essays</a>
+            <a href="games.html">Games</a>
+        </div>
+    </div>
+</nav>
+
+    <div class="breadcrumb">
+        <a href="essays.html">Essays</a>
+        <span class="breadcrumb__sep">›</span>
+        <span>The Flip</span>
+    </div>
+
+    <article id="main-content" class="max-w-4xl mx-auto px-8 py-20 relative z-10">
 
         <header class="mb-16">
             <div class="text-[#C9A04C] text-xs tracking-[0.25em] uppercase mb-6">The Flip &bull; Essay</div>
@@ -159,7 +135,7 @@
 
         <div class="mt-20 border-t border-[#C9A04C]/20 pt-14">
             <div class="text-[#C9A04C] text-xs tracking-[0.25em] uppercase mb-3">The Flip &mdash; Field Notes</div>
-            <p class="text-[#F5F0E6]/55 text-sm leading-relaxed mb-10 max-w-[54ch]">A sarcastic feminist scholar&rsquo;s field notes on linguistic gaslighting through contranyms. Fifteen words. Fifteen contradictions the language never apologised for.</p>
+            <p class="text-[#F5F0E6]/55 text-sm leading-relaxed mb-10 max-w-[54ch]">A sarcastic feminist scholar&rsquo;s field notes on linguistic gaslighting through contranyms. Thirty-one words. Thirty-one contradictions the language never apologised for.</p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#C9A04C]/10 border border-[#C9A04C]/10">
 
@@ -250,6 +226,102 @@
                 <a href="boundaries.html" class="bg-black/50 p-5 block hover:bg-[#C9A04C]/5 transition-colors group relative">
                     <span class="block text-xl text-[#F5F0E6] mb-1 tracking-wide">boundaries</span>
                     <span class="block text-xs text-[#F5F0E6]/45 leading-relaxed">Honorary contranym. The real asymmetry is the essay.</span>
+                    <span class="absolute bottom-4 right-4 text-[#C9A04C] text-xs opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span>
+                </a>
+
+                <a href="fast.html" class="bg-black/50 p-5 block hover:bg-[#C9A04C]/5 transition-colors group relative">
+                    <span class="block text-xl text-[#F5F0E6] mb-1 tracking-wide">fast</span>
+                    <span class="block text-xs text-[#F5F0E6]/45 leading-relaxed">Speed and stillness in identical grammar.</span>
+                    <span class="absolute bottom-4 right-4 text-[#C9A04C] text-xs opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span>
+                </a>
+
+                <a href="table.html" class="bg-black/50 p-5 block hover:bg-[#C9A04C]/5 transition-colors group relative">
+                    <span class="block text-xl text-[#F5F0E6] mb-1 tracking-wide">table</span>
+                    <span class="block text-xs text-[#F5F0E6]/45 leading-relaxed">The Atlantic divides its meaning.</span>
+                    <span class="absolute bottom-4 right-4 text-[#C9A04C] text-xs opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span>
+                </a>
+
+                <a href="peruse.html" class="bg-black/50 p-5 block hover:bg-[#C9A04C]/5 transition-colors group relative">
+                    <span class="block text-xl text-[#F5F0E6] mb-1 tracking-wide">peruse</span>
+                    <span class="block text-xs text-[#F5F0E6]/45 leading-relaxed">Careful reading versus a glance. Both are correct.</span>
+                    <span class="absolute bottom-4 right-4 text-[#C9A04C] text-xs opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span>
+                </a>
+
+                <a href="consult.html" class="bg-black/50 p-5 block hover:bg-[#C9A04C]/5 transition-colors group relative">
+                    <span class="block text-xl text-[#F5F0E6] mb-1 tracking-wide">consult</span>
+                    <span class="block text-xs text-[#F5F0E6]/45 leading-relaxed">Seeking advice. Dispensing it condescendingly.</span>
+                    <span class="absolute bottom-4 right-4 text-[#C9A04C] text-xs opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span>
+                </a>
+
+                <a href="buckle.html" class="bg-black/50 p-5 block hover:bg-[#C9A04C]/5 transition-colors group relative">
+                    <span class="block text-xl text-[#F5F0E6] mb-1 tracking-wide">buckle</span>
+                    <span class="block text-xs text-[#F5F0E6]/45 leading-relaxed">Security and collapse in one motion.</span>
+                    <span class="absolute bottom-4 right-4 text-[#C9A04C] text-xs opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span>
+                </a>
+
+                <a href="apology.html" class="bg-black/50 p-5 block hover:bg-[#C9A04C]/5 transition-colors group relative">
+                    <span class="block text-xl text-[#F5F0E6] mb-1 tracking-wide">apology</span>
+                    <span class="block text-xs text-[#F5F0E6]/45 leading-relaxed">Regret and defense wearing the same face.</span>
+                    <span class="absolute bottom-4 right-4 text-[#C9A04C] text-xs opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span>
+                </a>
+
+                <a href="bill.html" class="bg-black/50 p-5 block hover:bg-[#C9A04C]/5 transition-colors group relative">
+                    <span class="block text-xl text-[#F5F0E6] mb-1 tracking-wide">bill</span>
+                    <span class="block text-xs text-[#F5F0E6]/45 leading-relaxed">What you owe. What might become law.</span>
+                    <span class="absolute bottom-4 right-4 text-[#C9A04C] text-xs opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span>
+                </a>
+
+                <a href="fix.html" class="bg-black/50 p-5 block hover:bg-[#C9A04C]/5 transition-colors group relative">
+                    <span class="block text-xl text-[#F5F0E6] mb-1 tracking-wide">fix</span>
+                    <span class="block text-xs text-[#F5F0E6]/45 leading-relaxed">The solution and the problem it created.</span>
+                    <span class="absolute bottom-4 right-4 text-[#C9A04C] text-xs opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span>
+                </a>
+
+                <a href="oversight.html" class="bg-black/50 p-5 block hover:bg-[#C9A04C]/5 transition-colors group relative">
+                    <span class="block text-xl text-[#F5F0E6] mb-1 tracking-wide">oversight</span>
+                    <span class="block text-xs text-[#F5F0E6]/45 leading-relaxed">The watching. The failure to watch.</span>
+                    <span class="absolute bottom-4 right-4 text-[#C9A04C] text-xs opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span>
+                </a>
+
+                <a href="resign.html" class="bg-black/50 p-5 block hover:bg-[#C9A04C]/5 transition-colors group relative">
+                    <span class="block text-xl text-[#F5F0E6] mb-1 tracking-wide">resign</span>
+                    <span class="block text-xs text-[#F5F0E6]/45 leading-relaxed">Quitting. Accepting. Same word, opposite agency.</span>
+                    <span class="absolute bottom-4 right-4 text-[#C9A04C] text-xs opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span>
+                </a>
+
+                <a href="execute.html" class="bg-black/50 p-5 block hover:bg-[#C9A04C]/5 transition-colors group relative">
+                    <span class="block text-xl text-[#F5F0E6] mb-1 tracking-wide">execute</span>
+                    <span class="block text-xs text-[#F5F0E6]/45 leading-relaxed">The memo and the sentence. Both are carried out.</span>
+                    <span class="absolute bottom-4 right-4 text-[#C9A04C] text-xs opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span>
+                </a>
+
+                <a href="appropriate.html" class="bg-black/50 p-5 block hover:bg-[#C9A04C]/5 transition-colors group relative">
+                    <span class="block text-xl text-[#F5F0E6] mb-1 tracking-wide">appropriate</span>
+                    <span class="block text-xs text-[#F5F0E6]/45 leading-relaxed">Correct conduct. And the act of taking what isn&rsquo;t yours.</span>
+                    <span class="absolute bottom-4 right-4 text-[#C9A04C] text-xs opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span>
+                </a>
+
+                <a href="enjoin.html" class="bg-black/50 p-5 block hover:bg-[#C9A04C]/5 transition-colors group relative">
+                    <span class="block text-xl text-[#F5F0E6] mb-1 tracking-wide">enjoin</span>
+                    <span class="block text-xs text-[#F5F0E6]/45 leading-relaxed">Command and prohibition. Both use the same verb.</span>
+                    <span class="absolute bottom-4 right-4 text-[#C9A04C] text-xs opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span>
+                </a>
+
+                <a href="qualified.html" class="bg-black/50 p-5 block hover:bg-[#C9A04C]/5 transition-colors group relative">
+                    <span class="block text-xl text-[#F5F0E6] mb-1 tracking-wide">qualified</span>
+                    <span class="block text-xs text-[#F5F0E6]/45 leading-relaxed">Competent. Or hedged and conditional.</span>
+                    <span class="absolute bottom-4 right-4 text-[#C9A04C] text-xs opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span>
+                </a>
+
+                <a href="awful.html" class="bg-black/50 p-5 block hover:bg-[#C9A04C]/5 transition-colors group relative">
+                    <span class="block text-xl text-[#F5F0E6] mb-1 tracking-wide">awful / terrific</span>
+                    <span class="block text-xs text-[#F5F0E6]/45 leading-relaxed">A pair study in how awe became terror and terror became good.</span>
+                    <span class="absolute bottom-4 right-4 text-[#C9A04C] text-xs opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span>
+                </a>
+
+                <a href="nonplussed.html" class="bg-black/50 p-5 block hover:bg-[#C9A04C]/5 transition-colors group relative">
+                    <span class="block text-xl text-[#F5F0E6] mb-1 tracking-wide">nonplussed</span>
+                    <span class="block text-xs text-[#F5F0E6]/45 leading-relaxed">Stunned. Or completely unfazed. Depends which side of the Atlantic.</span>
                     <span class="absolute bottom-4 right-4 text-[#C9A04C] text-xs opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span>
                 </a>
 

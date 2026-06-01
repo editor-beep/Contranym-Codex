@@ -6,47 +6,33 @@
     <title>HOLD &mdash; The Flip &bull; Contranym Codex</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'EB Garamond', serif;
-            background: #2C2C2C;
-            color: #F5F0E6;
-            background-image: linear-gradient(rgba(60,11,36,0.85), rgba(60,11,36,0.85)), url('https://picsum.photos/id/1015/2000/1200');
-            background-size: cover;
-            background-attachment: fixed;
-        }
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px);
-            animation: filmgrain 0.8s steps(5) infinite;
-            pointer-events: none;
-            z-index: 0;
-        }
-        @keyframes filmgrain { 0% { background-position: 0 0; } 100% { background-position: 100px 100px; } }
-        .header-font { font-family: 'Playfair Display', serif; letter-spacing: 0.15em; }
-        .flip-title {
-            font-size: clamp(3.5rem, 10vw, 6.5rem);
-            line-height: 0.85;
-            animation: lynchJitter 4s infinite alternate;
-            font-family: 'Playfair Display', serif;
-            letter-spacing: 0.08em;
-        }
-        @keyframes lynchJitter {
-            0% { transform: translate(0,0) rotate(-0.4deg); }
-            100% { transform: translate(5px, -2px) rotate(0.4deg); }
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
+    
 </head>
 <body class="min-h-screen relative">
 
-    <nav class="bg-[#3C0B24] py-6 border-b-4 border-[#C9A04C] sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-8 flex justify-between items-center">
-            <a href="index.html" class="header-font text-3xl text-[#C9A04C]">CONTRANYM CODEX</a>
-            <a href="the-flip.html" class="text-[#C9A04C]/70 hover:text-[#C9A04C] transition-colors text-sm tracking-widest uppercase">&larr; The Flip</a>
+    
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<nav class="site-nav" aria-label="Main navigation">
+    <div class="site-nav__inner">
+        <a href="index.html" class="site-nav__logo">CONTRANYM CODEX</a>
+        <div class="site-nav__links">
+            <a href="index.html#codex">Codex</a>
+            <a href="the-flip.html" aria-current="page">The Flip</a>
+            <a href="essays.html">Essays</a>
+            <a href="games.html">Games</a>
         </div>
-    </nav>
+    </div>
+</nav>
+
+    <div class="breadcrumb">
+        <a href="index.html">Codex</a>
+        <span class="breadcrumb__sep">›</span>
+        <a href="the-flip.html">The Flip</a>
+        <span class="breadcrumb__sep">›</span>
+        <span>HOLD</span>
+    </div>
 
     <div class="max-w-5xl mx-auto px-8 py-16 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
