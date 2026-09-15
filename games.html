@@ -816,8 +816,8 @@ Behind you, the sign flickers once more. <span class="word-highlight">LEFT</span
         }).join('');
 
         const docHtml = redactionState.revealed
-            ? `${d.textBefore} <span class="word-highlight font-bold">${d.word}</span> ${d.textAfter}`
-            : `${d.textBefore} <span id="redact-block" onclick="revealWord()" class="inline-block bg-[#C9A04C]/90 text-transparent cursor-pointer select-none px-1 rounded-sm align-middle" style="min-width:7em" title="Click to reveal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> ${d.textAfter}`;
+            ? `${d.textBefore} <span id="revealed-word" tabindex="-1" class="word-highlight font-bold">${d.word}</span> ${d.textAfter}`
+            : `${d.textBefore} <span id="redact-block" role="button" tabindex="0" onclick="revealWord()" class="inline-block bg-[#C9A04C]/90 text-transparent cursor-pointer select-none px-1 rounded-sm align-middle" style="min-width:7em" aria-label="Reveal the redacted word" title="Reveal the redacted word">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> ${d.textAfter}`;
 
         const interpretHtml = redactionState.revealed ? `
             <div class="fade-in mt-8">
@@ -832,7 +832,7 @@ Behind you, the sign flickers once more. <span class="word-highlight">LEFT</span
                         ${d.readingB.label}
                     </button>
                 </div>
-            </div>` : `<p class="text-[#F5F0E6]/30 text-sm mt-8 italic">Click the redaction to reveal the word.</p>`;
+            </div>` : `<p class="text-[#F5F0E6]/30 text-sm mt-8 italic">Select the redaction to reveal the word.</p>`;
 
         document.getElementById('redaction-content').innerHTML = `
             <div class="fade-in">
@@ -851,6 +851,10 @@ Behind you, the sign flickers once more. <span class="word-highlight">LEFT</span
     function revealWord() {
         redactionState.revealed = true;
         renderRedaction();
+        // Put focus on the word itself: it is what the press did, and it keeps
+        // a keyboard user where they were instead of at the top of the document.
+        const word = document.getElementById('revealed-word');
+        if (word) word.focus();
     }
 
     function interpretDoc(choice) {
@@ -906,6 +910,16 @@ Behind you, the sign flickers once more. <span class="word-highlight">LEFT</span
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape') {
             ['flip-modal', 'escape-modal', 'screen-modal', 'redaction-modal'].forEach(closeModal);
+        }
+        // The redaction is a <span> carrying role="button"; this is the other
+        // half of that promise. Delegated, because the panel is re-rendered
+        // with innerHTML on every turn of the game.
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+            const block = e.target.closest && e.target.closest('#redact-block');
+            if (block) {
+                e.preventDefault();
+                block.click();
+            }
         }
     });
     </script>
